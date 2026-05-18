@@ -6,7 +6,7 @@ const Hyperlocal = () => {
   return (
     <div className="w-full bg-white">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center text-white overflow-hidden">
+      <section className="relative min-h-[60vh] py-28 md:py-32 flex items-center text-white overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1590400541334-3cfa0673d574?auto=format&fit=crop&q=80&w=1920" 
           alt="Hyperlocal Delivery" 

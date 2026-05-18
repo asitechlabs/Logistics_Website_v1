@@ -139,7 +139,7 @@ const Home = () => {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative min-h-[85vh] sm:h-[85vh] w-full flex items-center py-28 sm:py-0 overflow-hidden">
+      <section className="relative min-h-[85vh] sm:min-h-[85vh] w-full flex items-center py-28 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           {content.hero.imageUrl && !content.hero.imageUrl.endsWith('.mp4') && !content.hero.imageUrl.includes('Background.mp4') ? (
             <img
