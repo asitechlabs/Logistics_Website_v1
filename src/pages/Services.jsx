@@ -37,7 +37,7 @@ const Services = () => {
     <div className="w-full bg-white overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#001F5C] min-h-[60vh] flex items-center text-white py-20 overflow-hidden">
+      <section className="relative bg-[var(--navy-dark)] min-h-[60vh] flex items-center text-white py-20 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img 
             src="https://img.freepik.com/free-vector/map-nepal-vector-design-illustration_46706-965.jpg" 
@@ -58,14 +58,14 @@ const Services = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact" className="btn-primary text-lg px-12 py-4">Start Shipping</Link>
-              <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-[#001F5C] text-lg px-12 py-4">Get a Quote</Link>
+              <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-[var(--navy-dark)] text-lg px-12 py-4">Get a Quote</Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* 2. WHY CHOOSE ASI LOGISTICS */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-[28px] md:text-[36px] font-black text-[var(--primary)] uppercase tracking-tight">Why Choose ASI Logistics</h2>
@@ -73,8 +73,8 @@ const Services = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyChoose.map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300">
-                <div className="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-2xl">
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-[var(--primary)]/15 hover:shadow-xl transition-all duration-300">
+                <div className="w-14 h-14 bg-[var(--alt-bg)] rounded-xl flex items-center justify-center mb-6 text-2xl">
                   {item.icon}
                 </div>
                 <h3 className="text-lg font-black text-[var(--primary)] mb-3 uppercase leading-tight">{item.title}</h3>
@@ -95,12 +95,12 @@ const Services = () => {
           
           <div className="relative">
             {/* Timeline Line (Desktop) */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-100 hidden lg:block -translate-y-1/2"></div>
+            <div className="absolute top-1/2 left-0 w-full h-1 bg-[var(--primary)]/10 hidden lg:block -translate-y-1/2"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-4">
               {processSteps.map((step, i) => (
                 <div key={i} className="relative z-10 text-center group">
-                  <div className="w-20 h-20 bg-white border-4 border-gray-50 text-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:border-[var(--accent)] transition-all duration-300">
+                  <div className="w-20 h-20 bg-white border-4 border-[var(--alt-bg)] text-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:border-[var(--accent)] transition-all duration-300">
                     <span className="text-3xl">{step.icon}</span>
                   </div>
                   <div className="lg:absolute lg:-top-12 lg:left-1/2 lg:-translate-x-1/2 bg-[var(--accent)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mb-4 lg:mb-0">
@@ -116,20 +116,20 @@ const Services = () => {
       </section>
 
       {/* 4. OUR SERVICES GRID */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Comprehensive Services</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {mainServices.map((s, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl border border-gray-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group">
+              <div key={i} className="bg-white p-8 rounded-2xl border border-[var(--primary)]/10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group">
                 <div className="text-[var(--accent)] mb-6 text-4xl group-hover:scale-110 transition-transform">
                   {s.icon}
                 </div>
                 <h3 className="text-lg font-black text-[var(--primary)] mb-3 uppercase tracking-tight">{s.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-6">{s.desc}</p>
-                <div className="w-8 h-1 bg-gray-100 group-hover:w-full group-hover:bg-[var(--accent)] transition-all duration-500"></div>
+                <div className="w-8 h-1 bg-[var(--primary)]/10 group-hover:w-full group-hover:bg-[var(--accent)] transition-all duration-500"></div>
               </div>
             ))}
           </div>
@@ -137,7 +137,7 @@ const Services = () => {
       </section>
 
       {/* 5. WAREHOUSING SECTION */}
-      <section className="bg-[#001F5C] text-white py-24">
+      <section className="bg-[var(--navy-dark)] text-white py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">

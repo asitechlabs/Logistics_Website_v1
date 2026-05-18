@@ -19,8 +19,70 @@ const Home = () => {
       { label: 'Experience', value: 'Decades' },
       { label: 'Employees', value: '24,000+' }
     ],
-    services: [],
-    industries: [],
+    services: [
+      {
+        icon_name: 'FaTruck',
+        name: 'On-Demand Transport',
+        desc: 'Instant access to a flexible fleet of trucks and vans for scheduled or urgent cargo shipping across national and local networks.'
+      },
+      {
+        icon_name: 'FaBoxes',
+        name: 'Hyperlocal Delivery',
+        desc: 'Rapid, secure courier network delivering packages across high-density urban areas with real-time GPS tracking.'
+      },
+      {
+        icon_name: 'FaWarehouse',
+        name: 'E-Commerce Logistics',
+        desc: 'End-to-end e-commerce solutions, from automated inventory sorting at central nodes to seamless cash-on-delivery management.'
+      },
+      {
+        icon_name: 'FaPlane',
+        name: 'Air & Ocean Freight',
+        desc: 'High-efficiency international shipping lanes spanning global networks with real-time transit status and complete customs handling.'
+      },
+      {
+        icon_name: 'FaShieldAlt',
+        name: 'Cold-Chain Management',
+        desc: 'Strictly temperature-controlled logistics networks designed specifically for perishables, chemicals, and pharmaceuticals.'
+      },
+      {
+        icon_name: 'FaLink',
+        name: 'Supply Chain Design',
+        desc: 'Data-driven value chain optimization and route orchestration that reduces operational friction and costs.'
+      }
+    ],
+    industries: [
+      {
+        name: 'E-Commerce & Retail',
+        img: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=400',
+        desc: 'Frictionless last-mile delivery and inventory distribution for digital stores and offline chains.'
+      },
+      {
+        name: 'Healthcare & Pharma',
+        img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400',
+        desc: 'Strictly monitored cold-chain logistics for vaccines, life-saving drugs, and medical equipment.'
+      },
+      {
+        name: 'Heavy Industry',
+        img: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=400',
+        desc: 'Secure heavy transport solutions for machinery parts, raw materials, and factory output.'
+      },
+      {
+        name: 'FMCG & Grocery',
+        img: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=400',
+        desc: 'High-speed distribution keeping shelves stocked and logistics supply lines moving 24/7.'
+      },
+      {
+        name: 'Electronics & Tech',
+        img: 'https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=400',
+        desc: 'Highly secure handling and transport systems for high-value tech devices and micro-components.'
+      },
+      {
+        name: 'Energy & Infrastructure',
+        img: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=400',
+        desc: 'Specialized logistics and project cargo support for power plants, oil, and construction sites.'
+      }
+    ],
     services_label: 'Our Expertise',
     services_heading: 'Global Logistics Services',
     industries_label: 'Who We Serve',
@@ -50,7 +112,13 @@ const Home = () => {
         const docRef = doc(db, 'site_content', 'homepage');
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setContent(prev => ({ ...prev, ...docSnap.data() }));
+          const dbData = docSnap.data();
+          setContent(prev => ({
+            ...prev,
+            ...dbData,
+            services: dbData.services && dbData.services.length > 0 ? dbData.services : prev.services,
+            industries: dbData.industries && dbData.industries.length > 0 ? dbData.industries : prev.industries,
+          }));
         }
       } catch (err) {
         console.error('Error fetching content:', err);
@@ -77,7 +145,7 @@ const Home = () => {
               className="w-full h-full object-cover"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#001F5C]/95 via-[#001F5C]/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-dark)]/95 via-[var(--navy-dark)]/60 to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-white">
@@ -104,16 +172,16 @@ const Home = () => {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="py-24 bg-[var(--alt-bg)]">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="mb-16">
             <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.services_label}</span>
             <h2 className="section-heading">{content.services_heading}</h2>
           </div>
-
+ 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {content.services?.map((s, i) => (
-              <div key={i} className="card-hover p-8 group">
+              <div key={i} className="card-hover p-8 group bg-[var(--alt-bg)]">
                 <div className="text-4xl text-[var(--primary)] mb-6 group-hover:scale-110 transition-transform duration-300">
                   {getIcon(s.icon_name)}
                 </div>
@@ -127,7 +195,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+ 
       {/* GLOBAL REACH / STATS */}
       <section className="relative py-20 bg-[var(--primary)] text-white overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
@@ -142,9 +210,9 @@ const Home = () => {
         </div>
         <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
       </section>
-
+ 
       {/* INDUSTRIES SECTION */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
           <div className="mb-16 text-center">
             <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.industries_label}</span>
@@ -185,13 +253,13 @@ const Home = () => {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-full bg-red-50 text-[var(--accent)] flex items-center justify-center font-bold text-sm shrink-0 shadow-sm group-hover:bg-[var(--accent)] group-hover:text-white transition-all">
+                  <div className="w-10 h-10 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center font-bold text-sm shrink-0 shadow-sm group-hover:bg-[var(--accent)] group-hover:text-white transition-all">
                     ✓
                   </div>
                   <span className="font-bold text-[var(--primary)] text-base">Frictionless cross-border logistics lanes</span>
                 </div>
                 <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-[var(--primary)] flex items-center justify-center font-bold text-sm shrink-0 shadow-sm group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                  <div className="w-10 h-10 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center font-bold text-sm shrink-0 shadow-sm group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
                     ✓
                   </div>
                   <span className="font-bold text-[var(--primary)] text-base">24/7 dedicated fleet command and tracking</span>
@@ -236,7 +304,7 @@ const Home = () => {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="flex gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-blue-50 text-[var(--primary)] flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-14 h-14 rounded-xl bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center shrink-0 shadow-sm">
                     <FaGlobe className="text-2xl" />
                   </div>
                   <div>
@@ -245,7 +313,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-red-50 text-[var(--accent)] flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-14 h-14 rounded-xl bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center shrink-0 shadow-sm">
                     <FaShieldAlt className="text-2xl" />
                   </div>
                   <div>
@@ -270,10 +338,10 @@ const Home = () => {
       {/* CTA SECTION */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <div className="bg-[var(--primary)] rounded-3xl md:rounded-[40px] p-6 sm:p-12 md:p-20 text-center relative overflow-hidden">
+          <div className="bg-[var(--primary)] text-white rounded-3xl md:rounded-[40px] p-6 sm:p-12 md:p-20 text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-8">{content.cta_heading}</h2>
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-8" style={{ color: '#ffffff' }}>{content.cta_heading}</h2>
               <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                 {content.cta_subtext}
               </p>

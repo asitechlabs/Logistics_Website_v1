@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#001F5C] text-white pt-20 pb-10 mt-20">
+    <footer className="bg-[var(--primary)] text-white pt-20 pb-10 mt-20">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         {/* Brand Column */}
         <div className="space-y-6">
@@ -41,7 +41,7 @@ export default function Footer() {
 
         {/* Services Column */}
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider text-white">Our Services</h4>
+          <h4 className="text-lg font-bold mb-6 border-b border-[var(--alt-bg)]/20 pb-2 uppercase tracking-wider text-white">Our Services</h4>
           <ul className="space-y-4 text-sm text-white">
             <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Air Freight</Link></li>
             <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Ocean Freight</Link></li>
@@ -53,7 +53,7 @@ export default function Footer() {
 
         {/* Quick Links Column */}
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider text-white">Quick Links</h4>
+          <h4 className="text-lg font-bold mb-6 border-b border-[var(--alt-bg)]/20 pb-2 uppercase tracking-wider text-white">Quick Links</h4>
           <ul className="space-y-4 text-sm text-white">
             <li><Link to="/about" className="hover:text-[var(--accent)] transition-colors">About Us</Link></li>
             <li><Link to="/industries" className="hover:text-[var(--accent)] transition-colors">Industries</Link></li>
@@ -64,7 +64,7 @@ export default function Footer() {
 
         {/* Contact Column */}
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider text-white">Contact Us</h4>
+          <h4 className="text-lg font-bold mb-6 border-b border-[var(--alt-bg)]/20 pb-2 uppercase tracking-wider text-white">Contact Us</h4>
           <ul className="space-y-4 text-sm text-white">
             <li className="flex items-start gap-3">
               <FaMapMarkerAlt className="mt-1 text-[var(--accent)]" />
@@ -83,7 +83,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-gray-400 font-medium">
+      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-[var(--alt-bg)]/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-gray-400 font-medium">
         <p>© {currentYear} ASI Logistics. All Rights Reserved.</p>
         <div className="flex space-x-6">
           <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

@@ -12,7 +12,7 @@ const MeroUpaya = () => {
           alt="Mero Upaya Integration" 
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5C]/90 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-dark)]/90 to-transparent"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-4 block">Tech Synergy</span>

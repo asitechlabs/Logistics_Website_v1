@@ -91,7 +91,7 @@ const Industries = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <span className="text-[var(--accent)] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">Intelligence Division</span>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight uppercase tracking-tighter">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight uppercase tracking-tighter text-white">
               {data.hero.headline.split(' ').map((word, i) => i === data.hero.headline.split(' ').length - 1 ? <React.Fragment key={i}><br/><span className="text-blue-300">{word}</span></React.Fragment> : word + ' ')}
             </h1>
             <p className="text-base sm:text-lg md:text-2xl text-blue-100 font-medium leading-relaxed mb-10">
@@ -176,7 +176,7 @@ const Industries = () => {
                       <Globe2 className="text-[var(--accent)]" size={24} />
                       <span className="font-bold uppercase tracking-widest text-sm">{story.location}</span>
                     </div>
-                    <h3 className="text-3xl font-black mb-6 uppercase leading-tight">{story.title}</h3>
+                    <h3 className={`text-3xl font-black mb-6 uppercase leading-tight ${i % 2 === 0 ? 'text-white' : 'text-[var(--primary)]'}`}>{story.title}</h3>
                     <p className={`leading-relaxed mb-8 ${i % 2 === 0 ? 'text-blue-100' : 'text-gray-600'}`}>
                       {story.desc}
                     </p>
@@ -197,7 +197,7 @@ const Industries = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-black mb-8 uppercase leading-tight">Our Modern <br/><span className="text-[var(--accent)]">Tech Stack</span></h2>
+              <h2 className="text-4xl font-black mb-8 uppercase leading-tight text-white">Our Modern <br/><span className="text-[var(--accent)]">Tech Stack</span></h2>
               <p className="text-lg text-blue-100 mb-10 leading-relaxed">
                 By leveraging a wide range of cutting-edge technologies—from cloud-based infrastructure to real-time messaging—we reduce operational costs and significantly enhance customer satisfaction.
               </p>

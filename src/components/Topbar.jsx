@@ -28,15 +28,15 @@ export default function Topbar() {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''}`}>
       {/* Top Utility Bar */}
-      <div className="bg-[#D12B22] text-white text-[12px] font-semibold py-1 hidden md:block">
+      <div className="bg-[var(--accent)] text-white text-[12px] font-semibold py-1 hidden md:block">
         <div className="max-w-7xl mx-auto px-6 flex justify-end items-center space-x-6">
-          <div className="flex items-center gap-1 cursor-pointer hover:text-red-100 transition-all duration-200">
+          <div className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200">
             <FaGlobe /> <span>Language</span>
           </div>
-          <div className="flex items-center gap-1 cursor-pointer hover:text-red-100 transition-all duration-200">
+          <div className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200">
             <span>Region Selector</span>
           </div>
-          <div className="flex items-center gap-1 cursor-pointer hover:text-red-100 transition-all duration-200">
+          <div className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200">
             <FaSearch /> <span>Search</span>
           </div>
         </div>
@@ -167,7 +167,7 @@ export default function Topbar() {
 
                 {link.hasMega && link.name === 'Services' && (
                   <div className={`overflow-hidden transition-all duration-300 ${mobileSubOpen === 'Services' ? 'max-h-[350px] opacity-100 mt-2 pb-2' : 'max-h-0 opacity-0 pointer-events-none'}`}>
-                    <ul className="pl-4 border-l-2 border-red-500/20 space-y-3.5 mt-2">
+                    <ul className="pl-4 border-l-2 border-[var(--accent)]/30 space-y-3.5 mt-2">
                       <li>
                         <Link to="/services/ocean" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
                           <FaShip className="text-gray-400 text-xs" /> Ocean Freight
@@ -204,7 +204,7 @@ export default function Topbar() {
 
                 {link.hasMega && link.name === 'Solutions' && (
                   <div className={`overflow-hidden transition-all duration-300 ${mobileSubOpen === 'Solutions' ? 'max-h-[300px] opacity-100 mt-2 pb-2' : 'max-h-0 opacity-0 pointer-events-none'}`}>
-                    <ul className="pl-4 border-l-2 border-blue-500/20 space-y-3.5 mt-2">
+                    <ul className="pl-4 border-l-2 border-[var(--summer-shower)] space-y-3.5 mt-2">
                       <li>
                         <Link to="/solutions/on-demand" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
                           <FaTruck className="text-gray-400 text-xs" /> On-Demand Transport

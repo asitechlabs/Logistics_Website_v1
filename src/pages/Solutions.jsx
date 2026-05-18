@@ -51,7 +51,7 @@ const Solutions = () => {
     <div className="w-full bg-white overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#001F5C] min-h-[60vh] flex items-center text-white py-24 overflow-hidden">
+      <section className="relative bg-[var(--navy-dark)] min-h-[60vh] flex items-center text-white py-24 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl">
@@ -71,12 +71,12 @@ const Solutions = () => {
       </section>
 
       {/* 2. SOLUTIONS GRID */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {solutions.map((item, i) => (
-              <div key={i} className="bg-white p-10 rounded-[40px] shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-500 group flex flex-col">
-                <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-8 text-3xl group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-500">
+              <div key={i} className="bg-white p-10 rounded-[40px] shadow-sm border border-[var(--primary)]/10 hover:shadow-2xl transition-all duration-500 group flex flex-col">
+                <div className="w-16 h-16 bg-[var(--alt-bg)] rounded-2xl flex items-center justify-center mb-8 text-3xl group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-500">
                   {item.icon}
                 </div>
                 <h3 className="text-2xl font-black text-[var(--primary)] mb-4 uppercase tracking-tight">{item.title}</h3>
@@ -137,7 +137,7 @@ const Solutions = () => {
       </section>
 
       {/* 4. WHO WE SERVE SECTION */}
-      <section className="py-24 bg-gray-50 overflow-hidden">
+      <section className="py-24 bg-[var(--alt-bg)] overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase tracking-tight">Tailored for Every Industry</h2>
@@ -151,7 +151,7 @@ const Solutions = () => {
               { name: "Technology", icon: <Zap /> },
               { name: "FMCG", icon: <BarChart3 /> }
             ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-3xl text-center border border-gray-100 hover:border-[var(--accent)] transition-all group cursor-default">
+              <div key={i} className="bg-white p-8 rounded-3xl text-center border border-[var(--primary)]/10 hover:border-[var(--accent)] transition-all group cursor-default">
                  <div className="text-2xl text-gray-400 group-hover:text-[var(--accent)] transition-colors mb-4 flex justify-center">
                    {item.icon}
                  </div>
