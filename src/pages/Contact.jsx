@@ -123,7 +123,14 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-[var(--primary)] uppercase text-xs tracking-widest mb-1">Our Location</h4>
-                      <p className="text-sm text-[var(--text-light)]">Bagdol, Lalitpur, Nepal</p>
+                      <a 
+                        href="https://maps.app.goo.gl/mpfm3xRXeQ8tcXDS9" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-sm text-[var(--text-light)] hover:text-[var(--accent)] transition-colors"
+                      >
+                        Bagdol, Lalitpur, Nepal
+                      </a>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -132,7 +139,14 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-[var(--primary)] uppercase text-xs tracking-widest mb-1">Call Us</h4>
-                      <p className="text-sm text-[var(--text-light)] font-bold">+977 1 4XXXXXX</p>
+                      <a 
+                        href="https://wa.me/9779768552107" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-sm text-[var(--text-light)] font-bold hover:text-[var(--accent)] transition-colors"
+                      >
+                        +977 9768552107
+                      </a>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -141,7 +155,12 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-[var(--primary)] uppercase text-xs tracking-widest mb-1">Email Us</h4>
-                      <p className="text-sm text-[var(--text-light)]">info@asilogistics.com</p>
+                      <a 
+                        href="mailto:asi.research@gmail.com" 
+                        className="text-sm text-[var(--text-light)] hover:text-[var(--accent)] transition-colors"
+                      >
+                        asi.research@gmail.com
+                      </a>
                     </div>
                   </div>
                   <div className="flex gap-4">
