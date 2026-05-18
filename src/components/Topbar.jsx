@@ -7,6 +7,14 @@ export default function Topbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState(null);
+  const [alert, setAlert] = useState({ show: false, message: '' });
+
+  const triggerAlert = (feature) => {
+    setAlert({ show: true, message: `${feature} feature is expected shortly! Stay tuned.` });
+    setTimeout(() => {
+      setAlert({ show: false, message: '' });
+    }, 3500);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,13 +38,22 @@ export default function Topbar() {
       {/* Top Utility Bar */}
       <div className="bg-[var(--accent)] text-white text-[12px] font-semibold py-1 hidden md:block">
         <div className="max-w-7xl mx-auto px-6 flex justify-end items-center space-x-6">
-          <div className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200">
+          <div 
+            onClick={() => triggerAlert('Language Selector')} 
+            className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200"
+          >
             <FaGlobe /> <span>Language</span>
           </div>
-          <div className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200">
+          <div 
+            onClick={() => triggerAlert('Region Selector')} 
+            className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200"
+          >
             <span>Region Selector</span>
           </div>
-          <div className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200">
+          <div 
+            onClick={() => triggerAlert('Search')} 
+            className="flex items-center gap-1 cursor-pointer hover:opacity-90 transition-all duration-200"
+          >
             <FaSearch /> <span>Search</span>
           </div>
         </div>
@@ -148,20 +165,22 @@ export default function Topbar() {
             {navLinks.map((link) => (
               <li key={link.name} className="flex flex-col">
                 <div className="flex items-center justify-between">
-                  <Link 
-                    to={link.path === '#' ? (link.name === 'Services' ? '/services' : '/solutions') : link.path} 
-                    className="text-lg font-black text-[var(--primary)] uppercase tracking-tight hover:text-[var(--accent)] transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                  {link.hasMega && (
+                  {link.hasMega ? (
                     <button 
                       onClick={() => setMobileSubOpen(mobileSubOpen === link.name ? null : link.name)}
-                      className="p-2 text-[var(--primary)] hover:text-[var(--accent)] transition-colors"
+                      className="text-lg font-black text-[var(--primary)] uppercase tracking-tight hover:text-[var(--accent)] transition-colors text-left flex-grow py-2 flex items-center justify-between w-full"
                     >
+                      <span>{link.name}</span>
                       <FaChevronDown className={`text-sm transition-transform duration-300 ${mobileSubOpen === link.name ? 'rotate-180' : ''}`} />
                     </button>
+                  ) : (
+                    <Link 
+                      to={link.path} 
+                      className="text-lg font-black text-[var(--primary)] uppercase tracking-tight hover:text-[var(--accent)] transition-colors py-2 block w-full"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
                   )}
                 </div>
 
@@ -243,6 +262,12 @@ export default function Topbar() {
           </ul>
         </div>
       </nav>
+
+      {/* Premium Toast Notification */}
+      <div className={`fixed bottom-8 right-8 z-[9999] flex items-center gap-3.5 bg-slate-900/95 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-2xl border border-white/10 transition-all duration-500 ease-out transform ${alert.show ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95 pointer-events-none'}`}>
+        <div className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] animate-pulse shrink-0"></div>
+        <p className="text-sm font-semibold tracking-wide text-gray-100 font-sans">{alert.message}</p>
+      </div>
     </header>
 
   );
