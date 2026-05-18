@@ -160,7 +160,7 @@ const Services = () => {
                 ))}
               </ul>
             </div>
-            <div className="order-1 lg:order-2 rounded-[40px] overflow-hidden shadow-2xl h-[400px] lg:h-[550px]">
+            <div className="order-1 lg:order-2 rounded-lg overflow-hidden shadow-2xl h-[400px] lg:h-[550px]">
               <img 
                 src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=1000" 
                 alt="Modern Warehouse" 

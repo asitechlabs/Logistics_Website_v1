@@ -207,8 +207,8 @@ const Home = () => {
 
             {/* Right Column: Premium Video Container */}
             <div className="order-1 lg:order-2 relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-[40px] blur opacity-15 group-hover:opacity-30 transition duration-500"></div>
-              <div className="relative rounded-3xl lg:rounded-[36px] overflow-hidden shadow-2xl border border-white h-[250px] sm:h-[350px] lg:h-[450px]">
+              <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg blur opacity-15 group-hover:opacity-30 transition duration-500"></div>
+              <div className="relative rounded-lg overflow-hidden shadow-2xl border border-white h-[250px] sm:h-[350px] lg:h-[450px]">
                 <video 
                   src={homeVideo}
                   autoPlay 
@@ -255,7 +255,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="rounded-3xl lg:rounded-[32px] overflow-hidden shadow-2xl border border-gray-100 h-[250px] sm:h-[350px] lg:h-[450px] relative group">
+            <div className="rounded-lg overflow-hidden shadow-2xl border border-gray-100 h-[250px] sm:h-[350px] lg:h-[450px] relative group">
               <img 
                 src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=1200" 
                 alt="Smart Logistics" 

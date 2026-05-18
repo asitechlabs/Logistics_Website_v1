@@ -31,13 +31,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="absolute -inset-4 bg-[var(--alt-bg)] rounded-2xl -z-10 rotate-2"></div>
+              <div className="absolute -inset-4 bg-[var(--alt-bg)] rounded-lg -z-10 rotate-2"></div>
               <img
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
                 alt="Our Company"
-                className="rounded-2xl w-full h-[500px] object-cover shadow-2xl animate-fade-in"
+                className="rounded-lg w-full h-[500px] object-cover shadow-2xl animate-fade-in"
               />
-              <div className="absolute -bottom-6 -right-6 bg-[var(--accent)] text-white p-8 rounded-2xl shadow-xl hidden md:block">
+              <div className="absolute -bottom-6 -right-6 bg-[var(--accent)] text-white p-8 rounded-lg shadow-xl hidden md:block">
                 <span className="text-4xl font-black block">15+</span>
                 <span className="text-sm font-bold uppercase tracking-widest">Years Experience</span>
               </div>

@@ -169,7 +169,7 @@ const Industries = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {data.successStories.map((story, i) => (
-              <div key={i} className={`group relative overflow-hidden rounded-[40px] p-12 ${i % 2 === 0 ? 'bg-[var(--primary)] text-white' : 'bg-[var(--alt-bg)] text-[var(--primary)] border border-gray-100'}`}>
+              <div key={i} className={`group relative overflow-hidden rounded-lg p-12 ${i % 2 === 0 ? 'bg-[var(--primary)] text-white' : 'bg-[var(--alt-bg)] text-[var(--primary)] border border-gray-100'}`}>
                 <div className="relative z-10 h-full flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-6">
