@@ -4,6 +4,7 @@ import { nepalDistricts, countries } from '../data/delivery';
 import { db, emailsCollection } from '../firebase';
 import { addDoc, serverTimestamp } from 'firebase/firestore';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import backgroundVideo from '../assets/Background.mp4';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -89,12 +90,22 @@ const Contact = () => {
   return (
     <div className="w-full bg-[var(--alt-bg)]">
       {/* Hero Header */}
-      <section className="bg-[var(--primary)] py-20 text-white text-center relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight">Get a Quote</h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">Expert logistics advice and tailored solutions for your business needs.</p>
+      <section className="relative min-h-[40vh] flex items-center text-center text-white py-28 overflow-hidden bg-[var(--primary)] w-full">
+        <div className="absolute inset-0 z-0">
+          <video 
+            src={backgroundVideo} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="w-full h-full object-cover opacity-35"
+          />
+          <div className="absolute inset-0 bg-black/45"></div>
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-4 uppercase tracking-tight text-white">Get a Quote</h1>
+          <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto">Expert logistics advice and tailored solutions for your business needs.</p>
+        </div>
       </section>
 
       <section className="py-24">
@@ -103,7 +114,7 @@ const Contact = () => {
             
             {/* Contact Info Sidebar */}
             <div className="lg:col-span-1 space-y-8">
-              <div className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100">
+              <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-xl border border-gray-100">
                 <h3 className="text-2xl font-black text-[var(--primary)] mb-8 uppercase tracking-tight border-b border-gray-100 pb-4">Contact Details</h3>
                 <div className="space-y-6">
                   <div className="flex gap-4">
@@ -159,7 +170,7 @@ const Contact = () => {
             </div>
 
             {/* Quote Form */}
-            <div className="lg:col-span-2 bg-white p-10 md:p-16 rounded-3xl shadow-2xl border border-gray-50">
+            <div className="lg:col-span-2 bg-white p-6 sm:p-10 md:p-16 rounded-3xl shadow-2xl border border-gray-50">
               <div className="mb-10">
                 <h2 className="text-3xl font-black text-[var(--primary)] mb-2 uppercase tracking-tight">Request a Personalized Quote</h2>
                 <p className="text-[var(--text-light)] font-medium">Fill out the form below and our logistics experts will get back to you within 24 hours.</p>

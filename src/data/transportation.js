@@ -6,7 +6,7 @@ export const transportMethod = [
       'Nationwide pickup and delivery service across Nepal including Kathmandu, Pokhara, Birgunj, and Butwal, with end-to-end tracking and safe handling of parcels.',
     icon: 'Globe',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPcutktfFVPY5EL8eYWdIY4MOAuUPGRDpTGg&s',
+      'https://images.unsplash.com/photo-1566576721346-d4a3b4eaad21?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const transportMethod = [
       'Cost-effective international sea freight service for global shipping of bulk cargo through major ports, connecting Nepal via India to destinations worldwide including Asia, Europe, and the USA.',
     icon: 'Ship',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd2d3xBJG92rWsVg80jlknOO61UjawMaGkBQ&s',
+      'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const transportMethod = [
       'Reliable road freight services covering all major cities of Nepal and cross-border transportation to India and nearby regions for commercial and industrial goods.',
     icon: 'Truck',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrG8m6ReOg-1Y-8iPvHXWhDfFEySefvGNh1g&s',
+      'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const transportMethod = [
       'Quick and reliable delivery service within major cities of Nepal such as Kathmandu Valley, Lalitpur, and Bhaktapur using efficient bike courier networks.',
     icon: 'Bike',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4ukhPzQlZt2IcEh7l2pB0J7wRw8L6h3GX4A&s',
+      'https://images.unsplash.com/photo-1590400541334-3cfa0673d574?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 5,
@@ -42,6 +42,6 @@ export const transportMethod = [
       'Fast international air cargo service from Kathmandu to global destinations, ideal for urgent, high-value shipments with secure handling and express delivery options.',
     icon: 'Plane',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqJkZbi901xlkah6DGtaF7_xy6VJyLx1RrZQ&s',
+      'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&q=80&w=800',
   },
 ];

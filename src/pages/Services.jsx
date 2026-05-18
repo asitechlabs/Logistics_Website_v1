@@ -162,7 +162,7 @@ const Services = () => {
             </div>
             <div className="order-1 lg:order-2 rounded-[40px] overflow-hidden shadow-2xl h-[400px] lg:h-[550px]">
               <img 
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000" 
+                src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=1000" 
                 alt="Modern Warehouse" 
                 className="w-full h-full object-cover"
               />

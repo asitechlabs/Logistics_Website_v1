@@ -4,14 +4,14 @@ import { FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink, FaGlobe, FaChev
 import { images } from '../data/images';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import herobg from '../assets/Background.mp4';
+import homeVideo from '../assets/home.mp4';
 
 const Home = () => {
   const [content, setContent] = useState({
     hero: {
       headline: 'Moving Your World Forward',
       subheading: 'Enterprise-grade logistics solutions connecting your business to the global market with precision and trust.',
-      imageUrl: herobg,
+      imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1920',
     },
     stats: [
       { label: 'Countries', value: '46' },
@@ -62,32 +62,32 @@ const Home = () => {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative h-[85vh] w-full flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] sm:h-[85vh] w-full flex items-center py-28 sm:py-0 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {content.hero.imageUrl?.endsWith('.mp4') ? (
-            <video 
-              src={content.hero.imageUrl} 
-              autoPlay muted loop playsInline
-              className="w-full h-full object-cover"
-            />
-          ) : (
+          {content.hero.imageUrl && !content.hero.imageUrl.endsWith('.mp4') && !content.hero.imageUrl.includes('Background.mp4') ? (
             <img
               src={content.hero.imageUrl}
               alt="Hero Background"
               className="w-full h-full object-cover"
             />
+          ) : (
+            <img
+              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1920"
+              alt="Hero Background"
+              className="w-full h-full object-cover"
+            />
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#001F5C]/90 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001F5C]/95 via-[#001F5C]/60 to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-white">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 leading-tight text-white uppercase tracking-tighter">
               {content.hero.headline.split('\n').map((line, i) => (
                 <React.Fragment key={i}>{line}<br /></React.Fragment>
               ))}
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-gray-200 leading-relaxed font-medium">
+            <p className="text-base sm:text-lg md:text-2xl mb-10 text-gray-200 leading-relaxed font-medium">
               {content.hero.subheading}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -151,7 +151,7 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)]">{content.industries_heading}</h2>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {content.industries?.map((ind, i) => (
               <div key={i} className="relative h-64 overflow-hidden rounded-lg group cursor-pointer">
                 <img src={ind.img} alt={ind.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -168,35 +168,100 @@ const Home = () => {
         </div>
       </section>
 
-      {/* TRUST / SUSTAINABILITY */}
+      {/* OPERATIONS VIDEO SHOWCASE SECTION */}
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column: Text Content */}
+            <div className="space-y-8 order-2 lg:order-1">
+              <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm block">ASI In Action</span>
+              <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)] uppercase tracking-tight leading-tight">
+                Global Operations <br/>
+                <span className="text-[var(--accent)]">Synchronized</span>
+              </h2>
+              <div className="w-20 h-1.5 bg-[var(--accent)]"></div>
+              <p className="text-lg text-[var(--text-light)] leading-relaxed">
+                Watch how we orchestrate seamless freight networks across road, air, and sea routes. From our high-tech Kathmandu sorting facilities to international trade lanes, we bring modern, high-fidelity tracking and routing to every shipment.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-full bg-red-50 text-[var(--accent)] flex items-center justify-center font-bold text-sm shrink-0 shadow-sm group-hover:bg-[var(--accent)] group-hover:text-white transition-all">
+                    ✓
+                  </div>
+                  <span className="font-bold text-[var(--primary)] text-base">Frictionless cross-border logistics lanes</span>
+                </div>
+                <div className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 text-[var(--primary)] flex items-center justify-center font-bold text-sm shrink-0 shadow-sm group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                    ✓
+                  </div>
+                  <span className="font-bold text-[var(--primary)] text-base">24/7 dedicated fleet command and tracking</span>
+                </div>
+                <div className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm shrink-0 shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                    ✓
+                  </div>
+                  <span className="font-bold text-[var(--primary)] text-base">Optimized sorting and last-mile operations</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Premium Video Container */}
+            <div className="order-1 lg:order-2 relative group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-[40px] blur opacity-15 group-hover:opacity-30 transition duration-500"></div>
+              <div className="relative rounded-3xl lg:rounded-[36px] overflow-hidden shadow-2xl border border-white h-[250px] sm:h-[350px] lg:h-[450px]">
+                <video 
+                  src={homeVideo}
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/20 to-transparent"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TECHNOLOGY EDGE & SECURITY SECTION */}
       <section className="py-24 bg-[var(--alt-bg)] border-t border-gray-200">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.sus_label}</span>
-              <h2 className="text-4xl font-black text-[var(--primary)] mb-8">{content.sus_heading}</h2>
-              <p className="text-lg text-[var(--text-light)] mb-8">
-                {content.sus_text}
+              <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">The Tech Advantage</span>
+              <h2 className="text-4xl font-black text-[var(--primary)] mb-8 uppercase tracking-tight">Smart Logistics Ecosystem</h2>
+              <p className="text-lg text-[var(--text-light)] mb-8 leading-relaxed">
+                We integrate advanced tracking software, intelligent route optimization, and secure warehousing to provide complete supply chain transparency and maximum transit speed.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="flex gap-4">
-                  <FaLeaf className="text-3xl text-green-600 shrink-0" />
+                  <div className="w-14 h-14 rounded-xl bg-blue-50 text-[var(--primary)] flex items-center justify-center shrink-0 shadow-sm">
+                    <FaGlobe className="text-2xl" />
+                  </div>
                   <div>
-                    <h4 className="font-bold text-[var(--primary)]">Environment</h4>
-                    <p className="text-sm text-[var(--text-light)]">Committed to carbon neutrality by 2050.</p>
+                    <h4 className="font-bold text-[var(--primary)] text-lg mb-1 uppercase tracking-tight">Real-Time GPS Tracking</h4>
+                    <p className="text-sm text-[var(--text-light)] leading-relaxed">Follow your cargo at every milestone with high-fidelity live tracking and status updates.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <FaShieldAlt className="text-3xl text-blue-600 shrink-0" />
+                  <div className="w-14 h-14 rounded-xl bg-red-50 text-[var(--accent)] flex items-center justify-center shrink-0 shadow-sm">
+                    <FaShieldAlt className="text-2xl" />
+                  </div>
                   <div>
-                    <h4 className="font-bold text-[var(--primary)]">Governance</h4>
-                    <p className="text-sm text-[var(--text-light)]">Highest standards of ethical business.</p>
+                    <h4 className="font-bold text-[var(--primary)] text-lg mb-1 uppercase tracking-tight">Secure Logistics</h4>
+                    <p className="text-sm text-[var(--text-light)] leading-relaxed">Every shipment is protected by advanced security protocols and fully insured for ultimate peace of mind.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img src={content.sus_img} alt="Sustainability" className="w-full h-full object-cover" />
+            <div className="rounded-3xl lg:rounded-[32px] overflow-hidden shadow-2xl border border-gray-100 h-[250px] sm:h-[350px] lg:h-[450px] relative group">
+              <img 
+                src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=1200" 
+                alt="Smart Logistics" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/30 to-transparent"></div>
             </div>
           </div>
         </div>
@@ -205,7 +270,7 @@ const Home = () => {
       {/* CTA SECTION */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <div className="bg-[var(--primary)] rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden">
+          <div className="bg-[var(--primary)] rounded-3xl md:rounded-[40px] p-6 sm:p-12 md:p-20 text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
             <div className="relative z-10">
               <h2 className="text-3xl md:text-5xl font-black text-white mb-8">{content.cta_heading}</h2>

@@ -101,31 +101,31 @@ const Solutions = () => {
       {/* 3. CASE STUDY / IMPACT */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="bg-[var(--primary)] rounded-[60px] p-12 md:p-20 text-white relative overflow-hidden">
+          <div className="bg-[var(--primary)] rounded-3xl md:rounded-[60px] p-6 sm:p-12 md:p-20 text-white relative overflow-hidden">
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">SOLVING REAL-WORLD <br/>LOGISTICS HURDLES</h2>
-                <p className="text-lg text-blue-100 mb-10 leading-relaxed">
+                <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">SOLVING REAL-WORLD <br/>LOGISTICS HURDLES</h2>
+                <p className="text-base sm:text-lg text-blue-100 mb-10 leading-relaxed">
                   We don't just deliver packages; we solve bottlenecks. Whether it's optimizing Last-Mile delivery for e-commerce giants or managing cold-chain for pharma, our solutions are data-driven and impact-focused.
                 </p>
                 <div className="flex gap-12">
                   <div>
-                    <div className="text-4xl font-black text-[var(--accent)]">30%</div>
+                    <div className="text-3xl md:text-4xl font-black text-[var(--accent)]">30%</div>
                     <div className="text-xs font-bold uppercase tracking-widest text-blue-200 mt-2">Cost Reduction</div>
                   </div>
                   <div>
-                    <div className="text-4xl font-black text-[var(--accent)]">2X</div>
+                    <div className="text-3xl md:text-4xl font-black text-[var(--accent)]">2X</div>
                     <div className="text-xs font-bold uppercase tracking-widest text-blue-200 mt-2">Faster Delivery</div>
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                  <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-sm">
                    <Clock className="text-[var(--accent)] mb-4" />
                    <h4 className="font-bold mb-2">99.9% Uptime</h4>
                    <p className="text-xs text-blue-100">Our tech systems are always active, ensuring your orders never stall.</p>
                  </div>
-                 <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-sm mt-8">
+                 <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-sm sm:mt-8">
                    <ShieldCheck className="text-[var(--accent)] mb-4" />
                    <h4 className="font-bold mb-2">Secure Chain</h4>
                    <p className="text-xs text-blue-100">End-to-end encryption for all digital documentation and tracking.</p>

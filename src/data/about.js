@@ -1,12 +1,12 @@
 export const aboutData = {
   header: 'About Us',
   subHeader:
-    'Delivering refreshing beverages with quality, innovation, and excellence across Nepal.',
+    'Connecting Nepalese businesses to the global market with world-class freight and supply chain solutions.',
   companyName: 'ASI Logistic Private Limited',
   description: `ASI Logistics is a professional freight forwarding and logistics company that provides reliable, efficient, and secure transportation services within Nepal and across international markets. It specializes in managing the complete movement of goods through air, sea, and land transport, ensuring that shipments are delivered safely and on time. The company offers a wide range of services including cargo handling, warehousing, inventory management, customs clearance, real-time tracking, and last-mile delivery solutions. By combining modern logistics technology with an experienced operational team, ASI Logistics helps businesses streamline their supply chain and improve delivery efficiency. With a strong focus on trust, speed, and customer satisfaction, the company connects Nepal to global trade routes and supports businesses in expanding their reach worldwide while maintaining high standards of safety and professionalism in every shipment handled.
 `,
   image:
-    'https://scontent.fjkr2-1.fna.fbcdn.net/v/t39.30808-6/654288401_122119035387182352_925394542439894970_n.png?_nc_cat=102&ccb=1-7&_nc_sid=2a1932&_nc_ohc=-88_5ytZ9iUQ7kNvwH3ZbjE&_nc_oc=Adp40VFMGjmxD7GYgf65ksf-lMNSiH5cp89ZSki8Aaai6aAHkYtLP6ddz61AesWTLWk&_nc_zt=23&_nc_ht=scontent.fjkr2-1.fna&_nc_gid=huY6XAjZrhD3hLxfaCTx8w&_nc_ss=7b2a8&oh=00_Af37U3i9CV_1zL4cWoPuxOnii0u6SaBfkWs0l1til6-2Jw&oe=69EF834E',
+    'https://images.unsplash.com/photo-1454165833767-027ffea9e778?auto=format&fit=crop&q=80&w=800',
 };
 
 // Mission Purpose Vision

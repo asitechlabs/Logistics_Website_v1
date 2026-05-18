@@ -91,10 +91,10 @@ const Industries = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <span className="text-[var(--accent)] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">Intelligence Division</span>
-            <h1 className="text-4xl md:text-7xl font-black mb-8 leading-tight uppercase tracking-tighter">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight uppercase tracking-tighter">
               {data.hero.headline.split(' ').map((word, i) => i === data.hero.headline.split(' ').length - 1 ? <React.Fragment key={i}><br/><span className="text-blue-300">{word}</span></React.Fragment> : word + ' ')}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 font-medium leading-relaxed mb-10">
+            <p className="text-base sm:text-lg md:text-2xl text-blue-100 font-medium leading-relaxed mb-10">
               {data.hero.subheading}
             </p>
             <Link to="/contact" className="btn-primary text-lg px-12 py-4">Explore Our Tech</Link>

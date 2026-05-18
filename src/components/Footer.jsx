@@ -12,14 +12,15 @@ export default function Footer() {
         {/* Brand Column */}
         <div className="space-y-6">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="ASI Logistics" className="h-12 brightness-0 invert" />
+            <img src={logo} alt="ASI Logistics" className="h-12 object-contain" />
             <div className="flex flex-col">
-              <span className="font-black text-2xl tracking-tighter leading-none">
+              <span className="font-black text-2xl tracking-tighter leading-none text-white">
                 ASI <span className="text-[var(--accent)]">LOGISTICS</span>
               </span>
+              <span className="text-[8px] tracking-[0.2em] font-bold text-gray-300 uppercase mt-1">Moving Your World Forward</span>
             </div>
           </Link>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p className="text-gray-200 text-sm leading-relaxed">
             Providing enterprise-grade logistics solutions with precision, reliability, and a global reach. We move your world forward.
           </p>
           <div className="flex space-x-4">
@@ -40,31 +41,31 @@ export default function Footer() {
 
         {/* Services Column */}
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider">Our Services</h4>
-          <ul className="space-y-4 text-sm text-gray-400">
-            <li><Link to="/services" className="hover:text-white transition-colors">Air Freight</Link></li>
-            <li><Link to="/services" className="hover:text-white transition-colors">Ocean Freight</Link></li>
-            <li><Link to="/services" className="hover:text-white transition-colors">Road Transport</Link></li>
-            <li><Link to="/services" className="hover:text-white transition-colors">Warehousing</Link></li>
-            <li><Link to="/services" className="hover:text-white transition-colors">Supply Chain Solutions</Link></li>
+          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider text-white">Our Services</h4>
+          <ul className="space-y-4 text-sm text-white">
+            <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Air Freight</Link></li>
+            <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Ocean Freight</Link></li>
+            <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Road Transport</Link></li>
+            <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Warehousing</Link></li>
+            <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Supply Chain Solutions</Link></li>
           </ul>
         </div>
 
         {/* Quick Links Column */}
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider">Quick Links</h4>
-          <ul className="space-y-4 text-sm text-gray-400">
-            <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-            <li><Link to="/industries" className="hover:text-white transition-colors">Industries</Link></li>
-            <li><Link to="/contact" className="hover:text-white transition-colors">Get a Quote</Link></li>
-            <li><Link to="/careers" className="hover:text-white transition-colors">Careers</Link></li>
+          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider text-white">Quick Links</h4>
+          <ul className="space-y-4 text-sm text-white">
+            <li><Link to="/about" className="hover:text-[var(--accent)] transition-colors">About Us</Link></li>
+            <li><Link to="/industries" className="hover:text-[var(--accent)] transition-colors">Industries</Link></li>
+            <li><Link to="/contact" className="hover:text-[var(--accent)] transition-colors">Get a Quote</Link></li>
+            <li><Link to="/careers" className="hover:text-[var(--accent)] transition-colors">Careers</Link></li>
           </ul>
         </div>
 
         {/* Contact Column */}
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider">Contact Us</h4>
-          <ul className="space-y-4 text-sm text-gray-400">
+          <h4 className="text-lg font-bold mb-6 border-b border-gray-700 pb-2 uppercase tracking-wider text-white">Contact Us</h4>
+          <ul className="space-y-4 text-sm text-white">
             <li className="flex items-start gap-3">
               <FaMapMarkerAlt className="mt-1 text-[var(--accent)]" />
               <span>Kathmandu, Nepal</span>
@@ -82,7 +83,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-gray-500 font-medium">
+      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-gray-400 font-medium">
         <p>© {currentYear} ASI Logistics. All Rights Reserved.</p>
         <div className="flex space-x-6">
           <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

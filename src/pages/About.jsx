@@ -2,17 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { aboutData, valuesData } from '../data/about';
 import { FaPlay, FaHistory, FaBullseye, FaEye } from 'react-icons/fa';
+import backgroundVideo from '../assets/Background.mp4';
 
 const About = () => {
   return (
     <div className="w-full">
       {/* Page Header */}
-      <section className="bg-[var(--primary)] py-20 text-white relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">About ASI Logistics</h1>
-          <p className="text-xl text-blue-100 max-w-2xl">{aboutData.subHeader}</p>
+      <section className="relative min-h-[40vh] flex items-center text-white py-28 overflow-hidden bg-[var(--primary)]">
+        <div className="absolute inset-0 z-0">
+          <video 
+            src={backgroundVideo} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="w-full h-full object-cover opacity-35"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
         </div>
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-[var(--accent)] opacity-10 skew-x-12 translate-x-1/2"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">About ASI Logistics</h1>
+          <p className="text-xl text-white max-w-2xl">{aboutData.subHeader}</p>
+        </div>
       </section>
 
       {/* Main Content */}
@@ -22,9 +33,9 @@ const About = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-[var(--alt-bg)] rounded-2xl -z-10 rotate-2"></div>
               <img
-                src={aboutData.image}
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
                 alt="Our Company"
-                className="rounded-2xl w-full h-[500px] object-cover shadow-2xl"
+                className="rounded-2xl w-full h-[500px] object-cover shadow-2xl animate-fade-in"
               />
               <div className="absolute -bottom-6 -right-6 bg-[var(--accent)] text-white p-8 rounded-2xl shadow-xl hidden md:block">
                 <span className="text-4xl font-black block">15+</span>
