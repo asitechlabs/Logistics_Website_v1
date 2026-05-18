@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    --primary: #003087;
+    --accent: #E8382D;
+    --neutral-bg: #FFFFFF;
+    --alt-bg: #F5F5F5;
+    --text-main: #222222;
+    --text-light: #666666;
+    --navy-dark: #001F5C;
+    --white: #FFFFFF;
+  }
+
+  body {
+    @apply font-sans text-[var(--text-main)] bg-[var(--neutral-bg)];
+    font-family: 'Inter', 'Noto Sans', 'Open Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-[var(--primary)];
+  }
+
+  p {
+    @apply leading-[1.7];
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[var(--accent)] text-white px-6 py-3 rounded-md font-semibold transition-all duration-300 hover:bg-[#D12B22] hover:shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-white text-white px-6 py-3 rounded-md font-semibold transition-all duration-300 hover:bg-white hover:text-[var(--primary)];
+  }
+
+  .section-heading {
+    @apply text-[28px] md:text-[36px] text-[var(--primary)] mb-8 text-left;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white border border-gray-100;
+  }
+
+  .mega-menu {
+    @apply absolute top-full left-0 w-full bg-white shadow-2xl py-12 px-24 grid grid-cols-4 gap-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50;
+  }
+
+  .admin-input {
+    @apply w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all text-sm font-medium placeholder-slate-400 hover:border-slate-300;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
