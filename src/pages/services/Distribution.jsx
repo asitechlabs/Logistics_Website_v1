@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, DoorOpen, Globe, ShieldCheck, CheckCircle2, ArrowRight, Route } from 'lucide-react';
+import distributionImg from '../../assets/images/distribution.jpeg';
 
 const Distribution = () => {
   return (
@@ -8,7 +9,7 @@ const Distribution = () => {
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center text-white overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad21?auto=format&fit=crop&q=80&w=1920" 
+          src={distributionImg} 
           alt="Distribution" 
           className="absolute inset-0 w-full h-full object-cover"
         />

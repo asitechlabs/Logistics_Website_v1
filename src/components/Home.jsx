@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink, FaGlobe, FaChevronRight, FaLeaf, FaShieldAlt, FaUsers } from 'react-icons/fa';
+import { ShoppingCart, Truck, Route, DoorOpen, PackageCheck } from 'lucide-react';
 import { images } from '../data/images';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
@@ -21,34 +22,34 @@ const Home = () => {
     ],
     services: [
       {
-        icon_name: 'FaTruck',
-        name: 'On-Demand Transport',
-        desc: 'Instant access to a flexible fleet of trucks and vans for scheduled or urgent cargo shipping across national and local networks.'
-      },
-      {
-        icon_name: 'FaBoxes',
-        name: 'Hyperlocal Delivery',
-        desc: 'Rapid, secure courier network delivering packages across high-density urban areas with real-time GPS tracking.'
-      },
-      {
-        icon_name: 'FaWarehouse',
-        name: 'E-Commerce Logistics',
-        desc: 'End-to-end e-commerce solutions, from automated inventory sorting at central nodes to seamless cash-on-delivery management.'
+        icon_name: 'FaShip',
+        name: 'Ocean Freight',
+        desc: 'Reliable and cost-effective sea freight solutions for full container loads (FCL) and less than container loads (LCL) worldwide.'
       },
       {
         icon_name: 'FaPlane',
-        name: 'Air & Ocean Freight',
-        desc: 'High-efficiency international shipping lanes spanning global networks with real-time transit status and complete customs handling.'
+        name: 'Air Freight',
+        desc: 'Express air transport for time-sensitive cargo, ensuring rapid delivery across global destinations with complete tracking.'
       },
       {
-        icon_name: 'FaShieldAlt',
-        name: 'Cold-Chain Management',
-        desc: 'Strictly temperature-controlled logistics networks designed specifically for perishables, chemicals, and pharmaceuticals.'
+        icon_name: 'FaTruck',
+        name: 'Road Transport',
+        desc: 'Extensive ground networks providing seamless door-to-door transportation and efficient cross-border freight handling.'
+      },
+      {
+        icon_name: 'FaWarehouse',
+        name: 'Warehousing',
+        desc: 'Secure, climate-controlled storage facilities equipped with advanced inventory management and 24/7 security systems.'
+      },
+      {
+        icon_name: 'FaBoxes',
+        name: 'Distribution',
+        desc: 'Efficient sorting, fulfillment, and localized delivery networks ensuring your products reach the market faster and safer.'
       },
       {
         icon_name: 'FaLink',
-        name: 'Supply Chain Design',
-        desc: 'Data-driven value chain optimization and route orchestration that reduces operational friction and costs.'
+        name: 'Supply Chain',
+        desc: 'End-to-end supply chain orchestration, from procurement logistics to final mile optimization and data-driven routing.'
       }
     ],
     industries: [
@@ -105,6 +106,14 @@ const Home = () => {
     };
     return icons[name] || <FaLink />;
   };
+
+  const processSteps = [
+    { id: 1, title: 'Place Your Order', desc: 'Submit a pickup request through our platform in minutes.', icon: <ShoppingCart /> },
+    { id: 2, title: 'We Pick It Up', desc: 'Our rider arrives at your location and brings the package to our sortation hub.', icon: <Truck /> },
+    { id: 3, title: 'Sorting & Dispatch', desc: 'Packages are sorted by destination and assigned to the right delivery route.', icon: <Route /> },
+    { id: 4, title: 'Last-Mile Delivery', desc: 'Our rider delivers directly to your customer\'s door.', icon: <DoorOpen /> },
+    { id: 5, title: 'COD & POD', desc: 'We collect payment where applicable and send you delivery confirmation.', icon: <PackageCheck /> },
+  ];
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -172,7 +181,7 @@ const Home = () => {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
           <div className="mb-16">
             <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.services_label}</span>
@@ -181,7 +190,7 @@ const Home = () => {
  
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {content.services?.map((s, i) => (
-              <div key={i} className="card-hover p-8 group bg-[var(--alt-bg)]">
+              <div key={i} className="card-hover p-8 group bg-white">
                 <div className="text-4xl text-[var(--primary)] mb-6 group-hover:scale-110 transition-transform duration-300">
                   {getIcon(s.icon_name)}
                 </div>
@@ -212,7 +221,7 @@ const Home = () => {
       </section>
  
       {/* INDUSTRIES SECTION */}
-      <section className="py-24 bg-[var(--alt-bg)]">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="mb-16 text-center">
             <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.industries_label}</span>
@@ -232,6 +241,36 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5-STEP PROCESS SECTION */}
+      <section className="py-24 bg-[var(--alt-bg)] overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Simple 5-Step Process</h2>
+            <p className="text-gray-500 mt-4 font-medium uppercase tracking-widest text-sm">How we handle your shipments</p>
+          </div>
+          
+          <div className="relative">
+            {/* Timeline Line (Desktop) */}
+            <div className="absolute top-1/2 left-0 w-full h-1 bg-[var(--primary)]/10 hidden lg:block -translate-y-1/2"></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-4">
+              {processSteps.map((step, i) => (
+                <div key={i} className="relative z-10 text-center group">
+                  <div className="w-20 h-20 bg-white border-4 border-white text-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:border-[var(--accent)] transition-all duration-300">
+                    <span className="text-3xl">{step.icon}</span>
+                  </div>
+                  <div className="lg:absolute lg:-top-12 lg:left-1/2 lg:-translate-x-1/2 bg-[var(--accent)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mb-4 lg:mb-0">
+                    {step.id}
+                  </div>
+                  <h4 className="text-lg font-black text-[var(--primary)] mb-2 uppercase tracking-tight">{step.title}</h4>
+                  <p className="text-[var(--text-light)] text-xs font-medium px-4">{step.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
