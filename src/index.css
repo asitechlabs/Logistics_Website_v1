@@ -22,6 +22,8 @@
   body {
     @apply text-[var(--text-main)] bg-[var(--neutral-bg)];
     font-family: 'Exo', sans-serif !important;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   h1,
@@ -129,4 +131,6 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }

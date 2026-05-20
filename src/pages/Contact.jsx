@@ -5,6 +5,7 @@ import { db, emailsCollection } from '../firebase';
 import { addDoc, serverTimestamp } from 'firebase/firestore';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import backgroundVideo from '../assets/Background.mp4';
+import ScrollReveal from '../components/common/ScrollReveal';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -55,7 +56,7 @@ const Contact = () => {
       .then(() => {
         setStatus({ type: 'success', msg: 'Message sent successfully! Our team will contact you shortly.' });
         setLoading(false);
-
+ 
         addDoc(emailsCollection, {
           sender: form.name,
           email: form.email,
@@ -88,7 +89,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full bg-[var(--alt-bg)]">
+    <div className="w-full bg-[var(--alt-bg)] overflow-x-hidden">
       {/* Hero Header */}
       <section className="relative min-h-[40vh] flex items-center text-center text-white py-28 overflow-hidden bg-[var(--primary)] w-full">
         <div className="absolute inset-0 z-0">
@@ -102,7 +103,7 @@ const Contact = () => {
           />
           <div className="absolute inset-0 bg-black/45"></div>
         </div>
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 animate-fade-in">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-4 uppercase tracking-tight text-white">Get a Quote</h1>
           <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto">Expert logistics advice and tailored solutions for your business needs.</p>
         </div>
@@ -113,7 +114,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             
             {/* Contact Info Sidebar */}
-            <div className="lg:col-span-1 space-y-8">
+            <ScrollReveal direction="right" className="lg:col-span-1 space-y-8">
               <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-xl border border-gray-100">
                 <h3 className="text-2xl font-black text-[var(--primary)] mb-8 uppercase tracking-tight border-b border-gray-100 pb-4">Contact Details</h3>
                 <div className="space-y-6">
@@ -186,10 +187,10 @@ const Contact = () => {
                   loading="lazy"
                 />
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Quote Form */}
-            <div className="lg:col-span-2 bg-white p-6 sm:p-10 md:p-16 rounded-3xl shadow-2xl border border-gray-50">
+            <ScrollReveal direction="left" className="lg:col-span-2 bg-white p-6 sm:p-10 md:p-16 rounded-3xl shadow-2xl border border-gray-50">
               <div className="mb-10">
                 <h2 className="text-3xl font-black text-[var(--primary)] mb-2 uppercase tracking-tight">Request a Personalized Quote</h2>
                 <p className="text-[var(--text-light)] font-medium">Fill out the form below and our logistics experts will get back to you within 24 hours.</p>
@@ -339,8 +340,8 @@ const Contact = () => {
                 >
                   {loading ? 'Processing...' : 'Submit Request'}
                 </button>
-              </form>
-            </div>
+               </form>
+            </ScrollReveal>
           </div>
         </div>
       </section>

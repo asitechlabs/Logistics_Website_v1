@@ -6,6 +6,7 @@ import {
   ShieldCheck, CheckCircle2, Code2, Zap, 
   Map, ClipboardCheck, ArrowRight, Activity
 } from 'lucide-react';
+import ScrollReveal from '../components/common/ScrollReveal';
 
 const Services = () => {
   const whyChoose = [
@@ -47,16 +48,16 @@ const Services = () => {
         </div>
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-7xl font-black mb-8 leading-tight animate-fade-in uppercase tracking-tighter">
+            <h1 className="text-4xl md:text-7xl font-black mb-8 leading-tight animate-fade-in uppercase tracking-tighter text-white">
               Your End-to-End <br/>
-              <span className="text-[var(--accent)]">Delivery Partner</span> Across Nepal
+              <span className="text-[var(--accent)] text-shadow">Delivery Partner</span> Across Nepal
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-blue-100 font-medium leading-relaxed">
+            <p className="text-xl md:text-2xl mb-10 text-blue-100 font-medium leading-relaxed animate-fade-in">
               Built for businesses and individuals who need fast, reliable, and transparent shipping solutions. 
               From door-to-door parcel delivery to warehousing and COD management, we handle the full journey so you don't have to.
               With coverage across <span className="text-white font-bold">4,000+ destinations</span> nationwide.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 animate-fade-in">
               <Link to="/contact" className="btn-primary text-lg px-12 py-4">Start Shipping</Link>
               <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-[var(--navy-dark)] text-lg px-12 py-4">Get a Quote</Link>
             </div>
@@ -67,20 +68,30 @@ const Services = () => {
       {/* 2. WHY CHOOSE ASI LOGISTICS */}
       <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-[28px] md:text-[36px] font-black text-[var(--primary)] uppercase tracking-tight">Why Choose ASI Logistics</h2>
             <div className="w-20 h-1.5 bg-[var(--accent)] mx-auto mt-4"></div>
-          </div>
+          </ScrollReveal>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyChoose.map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-[var(--primary)]/15 hover:shadow-xl transition-all duration-300">
-                <div className="w-14 h-14 bg-[var(--alt-bg)] rounded-xl flex items-center justify-center mb-6 text-2xl">
-                  {item.icon}
-                </div>
-                <h3 className="text-lg font-black text-[var(--primary)] mb-3 uppercase leading-tight">{item.title}</h3>
-                <p className="text-[var(--text-light)] text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+            {whyChoose.map((item, i) => {
+              // Staggered entrances from different directions: left, up, down, right
+              const directions = ['right', 'down', 'up', 'left'];
+              return (
+                <ScrollReveal 
+                  key={i} 
+                  direction={directions[i % directions.length]}
+                  delay={i * 100}
+                  className="bg-white p-8 rounded-2xl shadow-sm border border-[var(--primary)]/15 hover:shadow-xl transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="w-14 h-14 bg-[var(--alt-bg)] rounded-xl flex items-center justify-center mb-6 text-2xl">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-black text-[var(--primary)] mb-3 uppercase leading-tight">{item.title}</h3>
+                  <p className="text-[var(--text-light)] text-sm leading-relaxed flex-grow">{item.desc}</p>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -88,10 +99,10 @@ const Services = () => {
       {/* 3. HOW IT WORKS (Timeline) */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
+          <ScrollReveal direction="up" className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Simple 5-Step Process</h2>
             <p className="text-gray-500 mt-4 font-medium uppercase tracking-widest text-sm">How we handle your shipments</p>
-          </div>
+          </ScrollReveal>
           
           <div className="relative">
             {/* Timeline Line (Desktop) */}
@@ -99,7 +110,12 @@ const Services = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-4">
               {processSteps.map((step, i) => (
-                <div key={i} className="relative z-10 text-center group">
+                <ScrollReveal 
+                  key={i} 
+                  direction="up" 
+                  delay={i * 150}
+                  className="relative z-10 text-center group"
+                >
                   <div className="w-20 h-20 bg-white border-4 border-[var(--alt-bg)] text-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:border-[var(--accent)] transition-all duration-300">
                     <span className="text-3xl">{step.icon}</span>
                   </div>
@@ -108,7 +124,7 @@ const Services = () => {
                   </div>
                   <h4 className="text-lg font-black text-[var(--primary)] mb-2 uppercase tracking-tight">{step.title}</h4>
                   <p className="text-[var(--text-light)] text-xs font-medium px-4">{step.desc}</p>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -118,29 +134,38 @@ const Services = () => {
       {/* 4. OUR SERVICES GRID */}
       <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Comprehensive Services</h2>
-          </div>
+          </ScrollReveal>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {mainServices.map((s, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl border border-[var(--primary)]/10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group">
-                <div className="text-[var(--accent)] mb-6 text-4xl group-hover:scale-110 transition-transform">
-                  {s.icon}
-                </div>
-                <h3 className="text-lg font-black text-[var(--primary)] mb-3 uppercase tracking-tight">{s.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6">{s.desc}</p>
-                <div className="w-8 h-1 bg-[var(--primary)]/10 group-hover:w-full group-hover:bg-[var(--accent)] transition-all duration-500"></div>
-              </div>
-            ))}
+            {mainServices.map((s, i) => {
+              const directions = ['right', 'up', 'left', 'down'];
+              return (
+                <ScrollReveal 
+                  key={i} 
+                  direction={directions[i % directions.length]} 
+                  delay={i * 100}
+                  className="bg-white p-8 rounded-2xl border border-[var(--primary)]/10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
+                >
+                  <div className="text-[var(--accent)] mb-6 text-4xl group-hover:scale-110 transition-transform">
+                    {s.icon}
+                  </div>
+                  <h3 className="text-lg font-black text-[var(--primary)] mb-3 uppercase tracking-tight">{s.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">{s.desc}</p>
+                  <div className="w-8 h-1 bg-[var(--primary)]/10 group-hover:w-full group-hover:bg-[var(--accent)] transition-all duration-500"></div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* 5. WAREHOUSING SECTION */}
-      <section className="bg-[var(--navy-dark)] text-white py-24">
+      <section className="bg-[var(--navy-dark)] text-white py-24 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
+            <ScrollReveal direction="right" className="order-2 lg:order-1">
               <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-4 block">Our Infrastructure</span>
               <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">18,000+ SQ FT OF <br/>SECURE STORAGE</h2>
               <p className="text-lg text-blue-100 mb-10 leading-relaxed">
@@ -159,44 +184,45 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="order-1 lg:order-2 rounded-lg overflow-hidden shadow-2xl h-[400px] lg:h-[550px]">
+            </ScrollReveal>
+
+            <ScrollReveal direction="left" className="order-1 lg:order-2 rounded-lg overflow-hidden shadow-2xl h-[400px] lg:h-[550px]">
               <img 
                 src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=1000" 
                 alt="Modern Warehouse" 
                 className="w-full h-full object-cover"
               />
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* 6. STATS / NUMBERS BAND */}
-      <section className="bg-[var(--accent)] py-20">
+      <section className="bg-[var(--accent)] py-20 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center text-white">
-            <div className="space-y-2">
+            <ScrollReveal direction="right" className="space-y-2">
               <div className="text-6xl font-black">90%</div>
               <div className="text-sm font-bold uppercase tracking-[0.2em] opacity-80">Successful Delivery Rate</div>
-            </div>
-            <div className="space-y-2">
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={150} className="space-y-2">
               <div className="text-6xl font-black">80%</div>
               <div className="text-sm font-bold uppercase tracking-[0.2em] opacity-80">Delivered Within 30 Hours</div>
-            </div>
-            <div className="space-y-2">
+            </ScrollReveal>
+            <ScrollReveal direction="left" delay={300} className="space-y-2">
               <div className="text-6xl font-black">4,000+</div>
               <div className="text-sm font-bold uppercase tracking-[0.2em] opacity-80">Locations Across Nepal</div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* 7. CONTACT / GET STARTED SECTION */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Left: Who We Serve */}
-            <div className="space-y-10">
+            <ScrollReveal direction="right" className="space-y-10">
               <div>
                 <h2 className="text-4xl font-black text-[var(--primary)] mb-6 uppercase">Ready to Simplify Your Logistics?</h2>
                 <p className="text-lg text-gray-600 font-medium">Whether you're an e-commerce seller, a corporate team, or an individual — ASI Logistics has a solution for you.</p>
@@ -219,10 +245,10 @@ const Services = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right: Minimal Form */}
-            <div className="bg-gray-50 p-10 md:p-12 rounded-[40px] border border-gray-100 shadow-sm">
+            <ScrollReveal direction="left" className="bg-gray-50 p-10 md:p-12 rounded-[40px] border border-gray-100 shadow-sm">
               <form className="space-y-6">
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">Full Name</label>
@@ -260,7 +286,7 @@ const Services = () => {
                 </div>
                 <button className="btn-primary w-full py-4 text-lg font-black uppercase tracking-widest">Send Inquiry</button>
               </form>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

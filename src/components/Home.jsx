@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink, FaGlobe, FaChevronRight, FaLeaf, FaShieldAlt, FaUsers } from 'react-icons/fa';
 import { ShoppingCart, Truck, Route, DoorOpen, PackageCheck } from 'lucide-react';
+import ScrollReveal from './common/ScrollReveal';
 import { images } from '../data/images';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
@@ -183,24 +184,35 @@ const Home = () => {
       {/* SERVICES SECTION */}
       <section className="py-24 bg-[var(--alt-bg)]">
         <div className="container mx-auto px-6">
-          <div className="mb-16">
-            <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.services_label}</span>
-            <h2 className="section-heading">{content.services_heading}</h2>
-          </div>
+          <ScrollReveal direction="up">
+            <div className="mb-16">
+              <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.services_label}</span>
+              <h2 className="section-heading">{content.services_heading}</h2>
+            </div>
+          </ScrollReveal>
  
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {content.services?.map((s, i) => (
-              <div key={i} className="card-hover p-8 group bg-white">
-                <div className="text-4xl text-[var(--primary)] mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {getIcon(s.icon_name)}
-                </div>
-                <h3 className="text-xl font-black mb-4 text-[var(--primary)] uppercase tracking-tight">{s.name}</h3>
-                <p className="text-[var(--text-light)] mb-6">{s.desc}</p>
-                <Link to="/services" className="text-[var(--accent)] font-bold text-sm flex items-center gap-2 group-hover:translate-x-2 transition-transform">
-                  Learn More <FaChevronRight className="text-xs" />
-                </Link>
-              </div>
-            ))}
+            {content.services?.map((s, i) => {
+              const directions = ['left', 'up', 'right', 'left', 'down', 'right'];
+              return ( 
+                <ScrollReveal 
+                  key={i} 
+                  direction={directions[i % directions.length]} 
+                  delay={(i % 3) * 100}
+                >
+                  <div className="card-hover p-8 group bg-white h-full">
+                    <div className="text-4xl text-[var(--primary)] mb-6 group-hover:scale-110 transition-transform duration-300">
+                      {getIcon(s.icon_name)}
+                    </div>
+                    <h3 className="text-xl font-black mb-4 text-[var(--primary)] uppercase tracking-tight">{s.name}</h3>
+                    <p className="text-[var(--text-light)] mb-6">{s.desc}</p>
+                    <Link to="/services" className="text-[var(--accent)] font-bold text-sm flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                      Learn More <FaChevronRight className="text-xs" />
+                    </Link>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -209,12 +221,20 @@ const Home = () => {
       <section className="relative py-20 bg-[var(--primary)] text-white overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {content.stats?.map((stat, i) => (
-              <div key={i} className="space-y-2">
-                <div className="text-4xl md:text-5xl font-black text-[var(--accent)]">{stat.value}</div>
-                <div className="text-xs md:text-sm font-bold uppercase tracking-widest text-blue-200">{stat.label}</div>
-              </div>
-            ))}
+            {content.stats?.map((stat, i) => {
+              return (
+                <ScrollReveal 
+                  key={i} 
+                  direction="up" 
+                  delay={i * 100}
+                >
+                  <div className="space-y-2">
+                    <div className="text-4xl md:text-5xl font-black text-[var(--accent)]">{stat.value}</div>
+                    <div className="text-xs md:text-sm font-bold uppercase tracking-widest text-blue-200">{stat.label}</div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
         <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
@@ -223,24 +243,35 @@ const Home = () => {
       {/* INDUSTRIES SECTION */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="mb-16 text-center">
-            <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.industries_label}</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)]">{content.industries_heading}</h2>
-          </div>
-
+          <ScrollReveal direction="up">
+            <div className="mb-16 text-center">
+              <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">{content.industries_label}</span>
+              <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)]">{content.industries_heading}</h2>
+            </div>
+          </ScrollReveal>
+ 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {content.industries?.map((ind, i) => (
-              <div key={i} className="relative h-64 overflow-hidden rounded-lg group cursor-pointer">
-                <img src={ind.img} alt={ind.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h4 className="text-white font-bold uppercase text-sm tracking-tight">{ind.name}</h4>
-                </div>
-                <div className="absolute inset-0 bg-[var(--primary)]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4 text-center">
-                  <p className="text-white text-xs font-medium">{ind.desc || `Expert solutions tailored for ${ind.name} logistics.`}</p>
-                </div>
-              </div>
-            ))}
+            {content.industries?.map((ind, i) => {
+              const directions = ['left', 'up', 'right', 'left', 'down', 'right'];
+              return (
+                <ScrollReveal 
+                  key={i} 
+                  direction={directions[i % directions.length]} 
+                  delay={(i % 3) * 80}
+                >
+                  <div className="relative h-64 overflow-hidden rounded-lg group cursor-pointer">
+                    <img src={ind.img} alt={ind.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h4 className="text-white font-bold uppercase text-sm tracking-tight">{ind.name}</h4>
+                    </div>
+                    <div className="absolute inset-0 bg-[var(--primary)]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4 text-center">
+                      <p className="text-white text-xs font-medium">{ind.desc || `Expert solutions tailored for ${ind.name} logistics.`}</p>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -248,28 +279,38 @@ const Home = () => {
       {/* 5-STEP PROCESS SECTION */}
       <section className="py-24 bg-[var(--alt-bg)] overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Simple 5-Step Process</h2>
-            <p className="text-gray-500 mt-4 font-medium uppercase tracking-widest text-sm">How we handle your shipments</p>
-          </div>
+          <ScrollReveal direction="up">
+            <div className="text-center mb-20">
+              <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Simple 5-Step Process</h2>
+              <p className="text-gray-500 mt-4 font-medium uppercase tracking-widest text-sm">How we handle your shipments</p>
+            </div>
+          </ScrollReveal>
           
           <div className="relative">
             {/* Timeline Line (Desktop) */}
             <div className="absolute top-1/2 left-0 w-full h-1 bg-[var(--primary)]/10 hidden lg:block -translate-y-1/2"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-4">
-              {processSteps.map((step, i) => (
-                <div key={i} className="relative z-10 text-center group">
-                  <div className="w-20 h-20 bg-white border-4 border-white text-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:border-[var(--accent)] transition-all duration-300">
-                    <span className="text-3xl">{step.icon}</span>
-                  </div>
-                  <div className="lg:absolute lg:-top-12 lg:left-1/2 lg:-translate-x-1/2 bg-[var(--accent)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mb-4 lg:mb-0">
-                    {step.id}
-                  </div>
-                  <h4 className="text-lg font-black text-[var(--primary)] mb-2 uppercase tracking-tight">{step.title}</h4>
-                  <p className="text-[var(--text-light)] text-xs font-medium px-4">{step.desc}</p>
-                </div>
-              ))}
+              {processSteps.map((step, i) => {
+                const directions = ['left', 'down', 'up', 'down', 'right'];
+                return (
+                  <ScrollReveal 
+                    key={i} 
+                    direction={directions[i % directions.length]} 
+                    delay={i * 100}
+                    className="relative z-10 text-center group"
+                  >
+                    <div className="w-20 h-20 bg-white border-4 border-white text-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:border-[var(--accent)] transition-all duration-300">
+                      <span className="text-3xl">{step.icon}</span>
+                    </div>
+                    <div className="lg:absolute lg:-top-12 lg:left-1/2 lg:-translate-x-1/2 bg-[var(--accent)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mb-4 lg:mb-0">
+                      {step.id}
+                    </div>
+                    <h4 className="text-lg font-black text-[var(--primary)] mb-2 uppercase tracking-tight">{step.title}</h4>
+                    <p className="text-[var(--text-light)] text-xs font-medium px-4">{step.desc}</p>
+                  </ScrollReveal>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -280,7 +321,7 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column: Text Content */}
-            <div className="space-y-8 order-2 lg:order-1">
+            <ScrollReveal direction="right" className="space-y-8 order-2 lg:order-1">
               <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm block">ASI In Action</span>
               <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)] uppercase tracking-tight leading-tight">
                 Global Operations <br/>
@@ -310,10 +351,10 @@ const Home = () => {
                   <span className="font-bold text-[var(--primary)] text-base">Optimized sorting and last-mile operations</span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right Column: Premium Video Container */}
-            <div className="order-1 lg:order-2 relative group">
+            <ScrollReveal direction="left" className="order-1 lg:order-2 relative group">
               <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg blur opacity-15 group-hover:opacity-30 transition duration-500"></div>
               <div className="relative rounded-lg overflow-hidden shadow-2xl border border-white h-[250px] sm:h-[350px] lg:h-[450px]">
                 <video 
@@ -326,7 +367,7 @@ const Home = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/20 to-transparent"></div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -335,7 +376,7 @@ const Home = () => {
       <section className="py-24 bg-[var(--alt-bg)] border-t border-gray-200">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <ScrollReveal direction="right">
               <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm mb-2 block">The Tech Advantage</span>
               <h2 className="text-4xl font-black text-[var(--primary)] mb-8 uppercase tracking-tight">Smart Logistics Ecosystem</h2>
               <p className="text-lg text-[var(--text-light)] mb-8 leading-relaxed">
@@ -361,15 +402,15 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-2xl border border-gray-100 h-[250px] sm:h-[350px] lg:h-[450px] relative group">
+            </ScrollReveal>
+            <ScrollReveal direction="left" className="rounded-lg overflow-hidden shadow-2xl border border-gray-100 h-[250px] sm:h-[350px] lg:h-[450px] relative group">
               <img 
                 src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=1200" 
                 alt="Smart Logistics" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/30 to-transparent"></div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -377,18 +418,20 @@ const Home = () => {
       {/* CTA SECTION */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <div className="bg-[var(--primary)] text-white rounded-3xl md:rounded-[40px] p-6 sm:p-12 md:p-20 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-8" style={{ color: '#ffffff' }}>{content.cta_heading}</h2>
-              <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-                {content.cta_subtext}
-              </p>
-              <Link to={content.cta_btn_link} className="btn-primary inline-block text-lg px-12">
-                {content.cta_btn_text}
-              </Link>
+          <ScrollReveal direction="up">
+            <div className="bg-[var(--primary)] text-white rounded-3xl md:rounded-[40px] p-6 sm:p-12 md:p-20 text-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-8" style={{ color: '#ffffff' }}>{content.cta_heading}</h2>
+                <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                  {content.cta_subtext}
+                </p>
+                <Link to={content.cta_btn_link} className="btn-primary inline-block text-lg px-12">
+                  {content.cta_btn_text}
+                </Link>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

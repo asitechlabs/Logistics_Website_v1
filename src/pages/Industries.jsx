@@ -7,6 +7,7 @@ import {
   Globe2, Rocket, Code, Laptop, Smartphone, 
   Server, Layers, Terminal, CheckCircle, Loader2 
 } from 'lucide-react';
+import ScrollReveal from '../components/common/ScrollReveal';
 
 const Industries = () => {
   const [loading, setLoading] = useState(true);
@@ -85,29 +86,29 @@ const Industries = () => {
   }
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white overflow-x-hidden">
       {/* 1. HERO SECTION */}
       <section className="bg-[var(--primary)] py-24 text-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="text-[var(--accent)] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">Intelligence Division</span>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight uppercase tracking-tighter text-white">
+            <span className="text-[var(--accent)] font-bold uppercase tracking-[0.3em] text-sm mb-4 block animate-fade-in">Intelligence Division</span>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight uppercase tracking-tighter text-white animate-fade-in">
               {data.hero.headline.split(' ').map((word, i) => i === data.hero.headline.split(' ').length - 1 ? <React.Fragment key={i}><br/><span className="text-blue-300">{word}</span></React.Fragment> : word + ' ')}
             </h1>
-            <p className="text-base sm:text-lg md:text-2xl text-blue-100 font-medium leading-relaxed mb-10">
+            <p className="text-base sm:text-lg md:text-2xl text-blue-100 font-medium leading-relaxed mb-10 animate-fade-in">
               {data.hero.subheading}
             </p>
-            <Link to="/contact" className="btn-primary text-lg px-12 py-4">Explore Our Tech</Link>
+            <Link to="/contact" className="btn-primary text-lg px-12 py-4 inline-block animate-fade-in">Explore Our Tech</Link>
           </div>
         </div>
         <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 skew-x-12 translate-x-1/4"></div>
       </section>
 
       {/* 2. VISION & MISSION */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+            <ScrollReveal direction="right" className="space-y-8">
               <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Innovation at Scale</h2>
               <div className="w-20 h-2 bg-[var(--accent)]"></div>
               <p className="text-lg text-gray-600 leading-relaxed">
@@ -116,8 +117,8 @@ const Industries = () => {
               <p className="text-lg text-gray-600 leading-relaxed font-bold italic">
                 "{data.vision.quote}"
               </p>
-            </div>
-            <div className="bg-[var(--alt-bg)] p-12 rounded-[40px] border border-gray-100 relative overflow-hidden group">
+            </ScrollReveal>
+            <ScrollReveal direction="left" className="bg-[var(--alt-bg)] p-12 rounded-[40px] border border-gray-100 relative overflow-hidden group">
                <div className="relative z-10">
                  <h4 className="text-xl font-black text-[var(--primary)] mb-6 uppercase tracking-wider">Our Focus Areas</h4>
                  <ul className="space-y-4">
@@ -129,65 +130,77 @@ const Industries = () => {
                    ))}
                  </ul>
                </div>
-               <BrainCircuit className="absolute -right-10 -bottom-10 text-[200px] text-gray-200 group-hover:text-[var(--accent)]/10 transition-colors duration-700" />
-            </div>
+               <BrainCircuit className="absolute -right-10 -bottom-10 text-[200px] text-gray-200 group-hover:text-[var(--accent)]/10 transition-colors duration-700 animate-pulse" />
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* 3. TECHNICAL FOUNDATION */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
+          <ScrollReveal direction="up" className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase tracking-tight">Our Technical Foundation</h2>
             <p className="text-gray-500 mt-4 font-bold uppercase tracking-widest text-sm">How we build the future of logistics</p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {data.foundation.map((card, i) => (
-              <div key={i} className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <ScrollReveal 
+                key={i} 
+                direction="up" 
+                delay={i * 150}
+                className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 h-full flex flex-col"
+              >
                 <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8">
                   {i === 0 ? <Target size={32} /> : i === 1 ? <Maximize size={32} /> : <BrainCircuit size={32} />}
                 </div>
                 <h3 className="text-2xl font-black text-[var(--primary)] mb-6 uppercase">{card.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed flex-grow">
                   {card.desc}
                 </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* 4. SUCCESS STORIES */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="mb-16">
+          <ScrollReveal direction="up" className="mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Global Footprint</h2>
             <p className="text-[var(--accent)] font-bold mt-2 uppercase tracking-[0.2em] text-sm">Technology Transfer & Partnerships</p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {data.successStories.map((story, i) => (
-              <div key={i} className={`group relative overflow-hidden rounded-lg p-12 ${i % 2 === 0 ? 'bg-[var(--primary)] text-white' : 'bg-[var(--alt-bg)] text-[var(--primary)] border border-gray-100'}`}>
-                <div className="relative z-10 h-full flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 mb-6">
-                      <Globe2 className="text-[var(--accent)]" size={24} />
-                      <span className="font-bold uppercase tracking-widest text-sm">{story.location}</span>
+            {data.successStories.map((story, i) => {
+              const dir = i % 2 === 0 ? 'right' : 'left';
+              return (
+                <ScrollReveal 
+                  key={i} 
+                  direction={dir}
+                  className={`group relative overflow-hidden rounded-lg p-12 h-full ${i % 2 === 0 ? 'bg-[var(--primary)] text-white' : 'bg-[var(--alt-bg)] text-[var(--primary)] border border-gray-100'}`}
+                >
+                  <div className="relative z-10 h-full flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 mb-6">
+                        <Globe2 className="text-[var(--accent)]" size={24} />
+                        <span className="font-bold uppercase tracking-widest text-sm">{story.location}</span>
+                      </div>
+                      <h3 className={`text-3xl font-black mb-6 uppercase leading-tight ${i % 2 === 0 ? 'text-white' : 'text-[var(--primary)]'}`}>{story.title}</h3>
+                      <p className={`leading-relaxed mb-8 ${i % 2 === 0 ? 'text-blue-100' : 'text-gray-600'}`}>
+                        {story.desc}
+                      </p>
                     </div>
-                    <h3 className={`text-3xl font-black mb-6 uppercase leading-tight ${i % 2 === 0 ? 'text-white' : 'text-[var(--primary)]'}`}>{story.title}</h3>
-                    <p className={`leading-relaxed mb-8 ${i % 2 === 0 ? 'text-blue-100' : 'text-gray-600'}`}>
-                      {story.desc}
-                    </p>
+                    <Link to="/contact" className="flex items-center gap-2 font-bold text-[var(--accent)] uppercase tracking-widest text-xs group-hover:translate-x-2 transition-transform">
+                      Inquire Now <Rocket size={14} />
+                    </Link>
                   </div>
-                  <Link to="/contact" className="flex items-center gap-2 font-bold text-[var(--accent)] uppercase tracking-widest text-xs group-hover:translate-x-2 transition-transform">
-                    Inquire Now <Rocket size={14} />
-                  </Link>
-                </div>
-                {i % 2 === 0 && <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>}
-              </div>
-            ))}
+                  {i % 2 === 0 && <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -196,7 +209,7 @@ const Industries = () => {
       <section className="py-24 bg-[var(--primary)] text-white overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <ScrollReveal direction="right">
               <h2 className="text-4xl font-black mb-8 uppercase leading-tight text-white">Our Modern <br/><span className="text-[var(--accent)]">Tech Stack</span></h2>
               <p className="text-lg text-blue-100 mb-10 leading-relaxed">
                 By leveraging a wide range of cutting-edge technologies—from cloud-based infrastructure to real-time messaging—we reduce operational costs and significantly enhance customer satisfaction.
@@ -219,9 +232,9 @@ const Industries = () => {
                   <span className="font-bold text-sm">R&D & AI</span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
             
-            <div className="relative h-[400px]">
+            <ScrollReveal direction="left" className="relative h-[400px]">
                <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-2xl border border-gray-700 h-full font-mono text-sm overflow-hidden">
                  <div className="flex gap-2 mb-4">
                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -239,27 +252,37 @@ const Industries = () => {
                    <p className="text-yellow-400"> ASI Logistics © 2026 - Innovation First</p>
                  </div>
                </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* 6. REGIONAL PRESENCE */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">Strategic Hubs & Presence</h2>
             <div className="w-20 h-1.5 bg-[var(--accent)] mx-auto mt-4"></div>
-          </div>
+          </ScrollReveal>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {data.hubs.map((hub, i) => (
-              <div key={i} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm group hover:border-[var(--primary)] transition-all">
-                <div className="text-[var(--accent)] mb-4 font-black uppercase text-xs tracking-widest italic">{hub.category}</div>
-                <h4 className="text-xl font-black text-[var(--primary)] mb-2 uppercase">{hub.title}</h4>
-                <p className="text-sm text-gray-500">{hub.desc}</p>
-              </div>
-            ))}
+            {data.hubs.map((hub, i) => {
+              const directions = ['right', 'up', 'down', 'left'];
+              return (
+                <ScrollReveal 
+                  key={i} 
+                  direction={directions[i % directions.length]} 
+                  delay={i * 100}
+                  className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm group hover:border-[var(--primary)] transition-all h-full flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="text-[var(--accent)] mb-4 font-black uppercase text-xs tracking-widest italic">{hub.category}</div>
+                    <h4 className="text-xl font-black text-[var(--primary)] mb-2 uppercase">{hub.title}</h4>
+                    <p className="text-sm text-gray-500">{hub.desc}</p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -267,14 +290,14 @@ const Industries = () => {
       {/* 7. JOIN US */}
       <section className="py-24 bg-white text-center">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto bg-[var(--alt-bg)] p-16 rounded-[60px] border border-gray-100 shadow-sm relative overflow-hidden">
+          <ScrollReveal direction="up" className="max-w-4xl mx-auto bg-[var(--alt-bg)] p-16 rounded-[60px] border border-gray-100 shadow-sm relative overflow-hidden">
              <div className="relative z-10">
                 <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)] mb-8 uppercase">Join the Disruptors</h2>
                 <p className="text-xl text-gray-600 mb-10 font-medium">We’re hiring creative minds who want to build the future of logistics in Nepal and beyond.</p>
                 <Link to="/contact" className="btn-primary text-lg px-12 py-4 inline-block">View All Openings</Link>
              </div>
              <Terminal className="absolute -left-10 -bottom-10 text-[200px] text-gray-200 opacity-20 rotate-12" />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

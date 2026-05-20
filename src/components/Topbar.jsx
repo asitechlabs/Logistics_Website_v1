@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaGlobe, FaSearch, FaChevronDown, FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
@@ -8,6 +8,13 @@ export default function Topbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState(null);
   const [alert, setAlert] = useState({ show: false, message: '' });
+  const [activeMenu, setActiveMenu] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    setActiveMenu(null);
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const triggerAlert = (feature) => {
     setAlert({ show: true, message: `${feature} feature is expected shortly! Stay tuned.` });
@@ -76,19 +83,31 @@ export default function Topbar() {
           {/* Desktop Menu */}
           <ul className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <li key={link.name} className="group static">
+              <li 
+                key={link.name} 
+                className="group static"
+                onMouseEnter={() => link.hasMega && setActiveMenu(link.name)}
+                onMouseLeave={() => link.hasMega && setActiveMenu(null)}
+              >
                 <Link 
                   to={link.path} 
                   onClick={link.path === '#' ? (e) => e.preventDefault() : undefined}
-                  className={`text-[14px] font-bold uppercase tracking-wide flex items-center gap-1 hover:text-[var(--accent)] transition-colors ${isScrolled ? 'text-[var(--text-main)]' : 'text-[var(--primary)]'}`}
+                  className={`text-[14px] font-bold uppercase tracking-wide flex items-center gap-1 hover:text-[var(--accent)] transition-colors ${
+                    activeMenu === link.name ? 'text-[var(--accent)]' : (isScrolled ? 'text-[var(--text-main)]' : 'text-[var(--primary)]')
+                  }`}
                 >
                   {link.name}
-                  {link.hasMega && <FaChevronDown className="text-[10px] group-hover:rotate-180 transition-transform" />}
+                  {link.hasMega && <FaChevronDown className={`text-[10px] transition-transform duration-300 ${activeMenu === link.name ? 'rotate-180' : ''}`} />}
                 </Link>
 
                 {/* Mega Menu for Solutions */}
                 {link.hasMega && link.name === 'Solutions' && (
-                  <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-10 px-6">
+                  <div 
+                    onClick={() => setActiveMenu(null)}
+                    className={`absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 transition-all duration-300 py-10 px-6 ${
+                      activeMenu === 'Solutions' ? 'opacity-100 visible' : 'opacity-0 invisible'
+                    }`}
+                  >
                     <div className="max-w-7xl mx-auto grid grid-cols-4 gap-8">
                       <div>
                         <h4 className="text-[14px] font-black text-[var(--primary)] uppercase border-b border-gray-200 pb-2 mb-4">Core Solutions</h4>
@@ -115,7 +134,12 @@ export default function Topbar() {
                 )}
 
                 {link.hasMega && link.name === 'Services' && (
-                  <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-10 px-6">
+                  <div 
+                    onClick={() => setActiveMenu(null)}
+                    className={`absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 transition-all duration-300 py-10 px-6 ${
+                      activeMenu === 'Services' ? 'opacity-100 visible' : 'opacity-0 invisible'
+                    }`}
+                  >
                     <div className="max-w-7xl mx-auto grid grid-cols-4 gap-8">
                       <div>
                         <h4 className="text-[14px] font-black text-[var(--primary)] uppercase border-b border-gray-200 pb-2 mb-4">Freight Services</h4>
