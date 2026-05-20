@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { aboutData, valuesData } from '../data/about';
 import { FaPlay, FaHistory, FaBullseye, FaEye } from 'react-icons/fa';
 import backgroundVideo from '../assets/Background.mp4';
+import animationVideo from '../assets/Logistics - Animation.mp4';
 import ScrollReveal from '../components/common/ScrollReveal';
 
 const About = () => {
@@ -40,7 +41,7 @@ const About = () => {
                   className="rounded-lg w-full h-[500px] object-cover shadow-2xl"
                 />
                 <div className="absolute -bottom-6 -right-6 bg-[var(--accent)] text-white p-8 rounded-lg shadow-xl hidden md:block">
-                  <span className="text-4xl font-black block">15+</span>
+                  <span className="text-4xl font-black block">5+</span>
                   <span className="text-sm font-bold uppercase tracking-widest">Years Experience</span>
                 </div>
               </div>
@@ -73,15 +74,21 @@ const About = () => {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={200} className="max-w-5xl mx-auto relative group">
-            <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-[32px] blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/MMyZ9Pu01RI?autoplay=1&mute=1&loop=1&playlist=MMyZ9Pu01RI&controls=0&rel=0"
-                title="About Video"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-              ></iframe>
+            <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+            <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl border border-white">
+              <video
+                className="w-full h-full object-cover"
+                src={animationVideo}
+                controls
+                playsInline
+                loop
+                muted
+                onTimeUpdate={(e) => {
+                  if (e.target.currentTime >= 18) {
+                    e.target.currentTime = 0;
+                  }
+                }}
+              />
             </div>
           </ScrollReveal>
         </div>
