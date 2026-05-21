@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaGlobe, FaSearch, FaChevronDown, FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGlobe, FaSearch, FaChevronDown, FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink, FaFileImport, FaFileExport } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
 export default function Topbar() {
@@ -17,7 +17,15 @@ export default function Topbar() {
   }, [location.pathname]);
 
   const triggerAlert = (feature) => {
-    setAlert({ show: true, message: `${feature} feature is expected shortly! Stay tuned.` });
+    setAlert({ show: true, message: 'Service Will Be Available Soon' });
+    setTimeout(() => {
+      setAlert({ show: false, message: '' });
+    }, 3500);
+  };
+
+  const showComingSoon = (e) => {
+    if (e) e.preventDefault();
+    setAlert({ show: true, message: 'Service Will Be Available Soon' });
     setTimeout(() => {
       setAlert({ show: false, message: '' });
     }, 3500);
@@ -140,7 +148,7 @@ export default function Topbar() {
                       activeMenu === 'Services' ? 'opacity-100 visible' : 'opacity-0 invisible'
                     }`}
                   >
-                    <div className="max-w-7xl mx-auto grid grid-cols-4 gap-8">
+                    <div className="max-w-7xl mx-auto grid grid-cols-5 gap-8">
                       <div>
                         <h4 className="text-[14px] font-black text-[var(--primary)] uppercase border-b border-gray-200 pb-2 mb-4">Freight Services</h4>
                         <ul className="space-y-3">
@@ -155,6 +163,13 @@ export default function Topbar() {
                           <li><Link to="/services/warehousing" className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors"><FaWarehouse className="text-[var(--primary)]"/> Warehousing</Link></li>
                           <li><Link to="/services/distribution" className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors"><FaBoxes className="text-[var(--primary)]"/> Distribution</Link></li>
                           <li><Link to="/services/supply-chain" className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors"><FaLink className="text-[var(--primary)]"/> Supply Chain</Link></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="text-[14px] font-black text-[var(--primary)] uppercase border-b border-gray-200 pb-2 mb-4">International Transport</h4>
+                        <ul className="space-y-3">
+                          <li><Link to="/services/import" className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors"><FaFileImport className="text-[var(--primary)]"/> Import Management</Link></li>
+                          <li><Link to="/services/export" className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors"><FaFileExport className="text-[var(--primary)]"/> Export Management</Link></li>
                         </ul>
                       </div>
                       <div className="col-span-2 bg-gray-50 p-8 rounded-2xl">
@@ -239,6 +254,19 @@ export default function Topbar() {
                       <li>
                         <Link to="/services/supply-chain" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
                           <FaLink className="text-gray-400 text-xs" /> Supply Chain
+                        </Link>
+                      </li>
+                      <li className="pt-2 pb-1">
+                        <span className="text-xs font-black text-[var(--primary)] uppercase tracking-wider">International Transport</span>
+                      </li>
+                      <li>
+                        <Link to="/services/import" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
+                          <FaFileImport className="text-gray-400 text-xs" /> Import Management
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/services/export" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
+                          <FaFileExport className="text-gray-400 text-xs" /> Export Management
                         </Link>
                       </li>
                     </ul>
