@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Ship, Plane, Truck, CheckCircle2, ArrowRight } from 'lucide-react';
+import GlobalTradeMap from '../../components/GlobalTradeMap';
 
 const ImportManagement = () => {
   return (
@@ -75,6 +76,8 @@ const ImportManagement = () => {
           </div>
         </div>
       </section>
+
+      <GlobalTradeMap />
 
       {/* CTA */}
       <section className="bg-gray-50 py-20">
