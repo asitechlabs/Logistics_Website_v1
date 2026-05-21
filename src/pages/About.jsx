@@ -77,9 +77,9 @@ const About = () => {
             <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
             <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl border border-white">
               <video
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
                 src={animationVideo}
-                controls
+                autoPlay
                 playsInline
                 loop
                 muted

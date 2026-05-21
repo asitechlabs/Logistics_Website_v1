@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, FileText, Globe, CheckCircle2, ArrowRight } from 'lucide-react';
+import GlobalTradeMap from '../../components/GlobalTradeMap';
 
 const ExportManagement = () => {
   return (
@@ -75,6 +76,8 @@ const ExportManagement = () => {
           </div>
         </div>
       </section>
+
+      <GlobalTradeMap />
 
       {/* CTA */}
       <section className="bg-gray-50 py-20">
