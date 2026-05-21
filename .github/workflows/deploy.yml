@@ -26,16 +26,8 @@ jobs:
             echo "Pulling latest code..."
             git pull origin main
 
-            echo "Stopping old container..."
-            docker stop asilogistics_app || true
-            docker rm asilogistics_app || true
+            echo "Rebuilding Docker container..."
+            docker compose up -d --build
 
-            echo "Building image..."
-            docker build -t asilogistics_app .
-
-            echo "Starting container..."
-            docker run -d \
-              --name asilogistics_app \
-              -p 3000:80 \
-              --restart always \
-              asilogistics_app
+            # cleanup old dangling images
+            docker image prune -f
