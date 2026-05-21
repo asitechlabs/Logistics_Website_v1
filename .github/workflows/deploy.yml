@@ -27,7 +27,6 @@ jobs:
             git pull origin main
 
             echo "Rebuilding Docker container..."
-            docker compose down || true
             docker compose up -d --build
 
             # cleanup old dangling images
