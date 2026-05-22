@@ -11,8 +11,15 @@ const tradeRegions = [
   { countryName: "United Kingdom", type: "export", volume: "Medium Volume", areas: ["London", "Felixstowe", "Southampton", "Manchester"], coordinates: [-3, 55] },
   { countryName: "India", type: "import", volume: "High Volume", areas: ["Mumbai", "Chennai", "Kolkata", "New Delhi", "Mundra"], coordinates: [79, 22] },
   { countryName: "Australia", type: "both", volume: "Medium Volume", areas: ["Sydney", "Melbourne", "Brisbane", "Perth"], coordinates: [134, -25] },
-  { countryName: "Nepal", type: "import", volume: "Low Volume", areas: ["Kathmandu", "Birgunj", "Biratnagar"], coordinates: [84, 28] },
-  { countryName: "Poland", type: "export", volume: "Medium Volume", areas: ["Warsaw", "Kraków", "Gdańsk", "Wrocław"], coordinates: [20, 52] }
+  { countryName: "Germany", type: "both", volume: "Medium Volume", areas: ["Berlin", "Hamburg", "Munich", "Frankfurt"], coordinates: [10, 51] },
+  { countryName: "China", type: "both", volume: "High Volume", areas: ["Beijing", "Shanghai", "Guangzhou", "Shenzhen"], coordinates: [104, 35] },
+  { countryName: "Japan", type: "both", volume: "High Volume", areas: ["Tokyo", "Osaka", "Yokohama", "Nagoya"], coordinates: [138, 36] },
+  { countryName: "South Korea", type: "both", volume: "High Volume", areas: ["Seoul", "Busan", "Incheon", "Daegu"], coordinates: [127, 37] },
+  { countryName: "Sri Lanka", type: "both", volume: "Low Volume", areas: ["Colombo", "Kandy", "Galle"], coordinates: [80, 7] },
+  { countryName: "United Arab Emirates", type: "both", volume: "Medium Volume", areas: ["Dubai", "Abu Dhabi", "Sharjah"], coordinates: [54, 24] },
+  { countryName: "Bangladesh", type: "both", volume: "Low Volume", areas: ["Dhaka", "Chittagong", "Khulna"], coordinates: [90, 23] },
+  { countryName: "Malaysia", type: "both", volume: "Medium Volume", areas: ["Kuala Lumpur", "Penang", "Johor Bahru"], coordinates: [102, 4] },
+  { countryName: "Europe", type: "both", volume: "High Volume", areas: ["Paris", "Berlin", "Madrid", "Rome", "Amsterdam"], coordinates: [10, 50] },
 ];
 
 const colorMap = {
