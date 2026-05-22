@@ -169,7 +169,7 @@ export default function Topbar() {
                         <h4 className="text-[14px] font-black text-[var(--primary)] uppercase border-b border-gray-200 pb-2 mb-4">International Transport</h4>
                         <ul className="pl-4 space-y-2 mt-2">
                           <li>
-                            <Link to="/services/door-to-door" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
+                            <Link to="/services/door-to-door" onClick={() => setIsOpen(false)} className="text-sm  text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
                               <FaDoorOpen className="text-gray-400 text-xs"/> Door to Door Delivery
                             </Link>
                           </li>
