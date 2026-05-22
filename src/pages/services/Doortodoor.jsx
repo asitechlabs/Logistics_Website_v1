@@ -393,7 +393,7 @@ const DoorToDoor = () => {
                 Ideal For
               </span>
               <h2 className="text-3xl md:text-5xl font-black text-[var(--primary)] uppercase">
-                Who Uses This Service?
+                Who Uses This Service..?
               </h2>
               <div className="w-20 h-1.5 bg-[var(--accent)] mx-auto mt-4"></div>
             </div>
