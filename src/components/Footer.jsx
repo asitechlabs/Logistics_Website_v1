@@ -24,10 +24,10 @@ export default function Footer() {
             Providing enterprise-grade logistics solutions with precision, reliability, and a global reach. We move your world forward.
           </p>
           <div className="flex space-x-4">
-            <a 
-              href="https://www.facebook.com/profile.php?id=61585470568856" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.facebook.com/profile.php?id=61585470568856"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors"
             >
               <FaFacebookF size={14} />
@@ -35,18 +35,18 @@ export default function Footer() {
             <a href="https://wa.me/9779768552107" className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors">
               <FaWhatsapp size={14} />
             </a>
-            <a 
-              href="https://linkedin.com/company/technology-asi/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://linkedin.com/company/technology-asi/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors"
             >
               <FaLinkedinIn size={14} />
             </a>
-            <a 
-              href="https://www.instagram.com/asitech.official/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.instagram.com/asitech.official/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors"
             >
               <FaInstagram size={14} />
@@ -82,21 +82,21 @@ export default function Footer() {
           <h4 className="text-lg font-bold mb-6 border-b border-[var(--alt-bg)]/20 pb-2 uppercase tracking-wider text-white">Contact Us</h4>
           <ul className="space-y-4 text-sm text-white">
             <li>
-              <a 
-                href="https://maps.app.goo.gl/mpfm3xRXeQ8tcXDS9" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://maps.app.goo.gl/mpfm3xRXeQ8tcXDS9"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-start gap-3 hover:text-[var(--accent)] transition-colors"
               >
                 <FaMapMarkerAlt className="mt-1 text-[var(--accent)] shrink-0" />
-                <span>Kathmandu, Nepal</span>
+                <span>Kathmandu, Nepal .</span>
               </a>
             </li>
             <li>
-              <a 
-                href="https://wa.me/9779768552107" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://wa.me/9779768552107"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-[var(--accent)] transition-colors"
               >
                 <FaPhoneAlt className="text-[var(--accent)] shrink-0" />
@@ -104,8 +104,8 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a 
-                href="mailto:asi.research@gmail.com" 
+              <a
+                href="mailto:asi.research@gmail.com"
                 className="flex items-center gap-3 hover:text-[var(--accent)] transition-colors"
               >
                 <FaEnvelope className="text-[var(--accent)] shrink-0" />

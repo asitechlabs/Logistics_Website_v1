@@ -3,7 +3,7 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simp
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, ArrowRightLeft, PackageCheck, PackageOpen, X, ChevronRight, RotateCcw, MousePointerClick } from 'lucide-react';
 
-const geoUrl = '/src/data/world-110m.json';
+const geoUrl = '/world-110m.json';
 
 // Trade data matching topology names — with geographic coordinates for zoom
 const tradeRegions = [
@@ -195,7 +195,7 @@ setTimeout(()=> setSelectedCountry(region), ZOOM_IN_DURATION * 1.5);
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -203,7 +203,7 @@ setTimeout(()=> setSelectedCountry(region), ZOOM_IN_DURATION * 1.5);
           >
             Global Coverage
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -212,7 +212,7 @@ setTimeout(()=> setSelectedCountry(region), ZOOM_IN_DURATION * 1.5);
           >
             Interactive Trade Routes
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -224,14 +224,14 @@ setTimeout(()=> setSelectedCountry(region), ZOOM_IN_DURATION * 1.5);
         </div>
 
         {/* Map Container */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="relative w-full max-w-4xl mx-auto bg-gray-50/50 rounded-[2rem] border border-gray-100 p-4 md:p-8 shadow-sm"
         >
-          <ComposableMap 
+          <ComposableMap
             projectionConfig={{
               scale: 140,
               center: [0, 20]
@@ -372,11 +372,10 @@ setTimeout(()=> setSelectedCountry(region), ZOOM_IN_DURATION * 1.5);
             <div className="space-y-1.5">
               <div className="flex justify-between items-center text-sm">
                 <span className="text-gray-400">Trade Type:</span>
-                <span className={`font-semibold capitalize px-2 py-0.5 rounded-full text-xs ${
-                  tooltipContent.type === 'export' ? 'bg-blue-500/20 text-blue-300' :
-                  tooltipContent.type === 'import' ? 'bg-green-500/20 text-green-300' :
-                  'bg-purple-500/20 text-purple-300'
-                }`}>
+                <span className={`font-semibold capitalize px-2 py-0.5 rounded-full text-xs ${tooltipContent.type === 'export' ? 'bg-blue-500/20 text-blue-300' :
+                    tooltipContent.type === 'import' ? 'bg-green-500/20 text-green-300' :
+                      'bg-purple-500/20 text-purple-300'
+                  }`}>
                   {tooltipContent.type === 'both' ? 'Import & Export' : tooltipContent.type}
                 </span>
               </div>
@@ -397,7 +396,7 @@ setTimeout(()=> setSelectedCountry(region), ZOOM_IN_DURATION * 1.5);
       <AnimatePresence>
         {selectedCountry && (
           <>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
