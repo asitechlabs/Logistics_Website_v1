@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn,FaWhatsapp , FaInstagram, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[var(--primary)] text-white pt-20 pb-10 mt-20">
+    <footer className="bg-[var(--primary)] text-white pt-20 pb-10 mt-20 sm:pt-8 sm:pb-4 sm:mt-10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         {/* Brand Column */}
         <div className="space-y-6">
@@ -32,8 +32,8 @@ export default function Footer() {
             >
               <FaFacebookF size={14} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors">
-              <FaTwitter size={14} />
+            <a href="https://wa.me/9779768552107" className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors">
+              <FaWhatsapp size={14} />
             </a>
             <a 
               href="https://linkedin.com/company/technology-asi/" 
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
 
         {/* Services Column */}
-        <div>
+        <div className="hidden md:block">
           <h4 className="text-lg font-bold mb-6 border-b border-[var(--alt-bg)]/20 pb-2 uppercase tracking-wider text-white">Our Services</h4>
           <ul className="space-y-4 text-sm text-white">
             <li><Link to="/services" className="hover:text-[var(--accent)] transition-colors">Air Freight</Link></li>
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         {/* Quick Links Column */}
-        <div>
+        <div className="hidden md:block">
           <h4 className="text-lg font-bold mb-6 border-b border-[var(--alt-bg)]/20 pb-2 uppercase tracking-wider text-white">Quick Links</h4>
           <ul className="space-y-4 text-sm text-white">
             <li><Link to="/about" className="hover:text-[var(--accent)] transition-colors">About Us</Link></li>
@@ -78,7 +78,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Column */}
-        <div>
+        <div className="hidden md:block">
           <h4 className="text-lg font-bold mb-6 border-b border-[var(--alt-bg)]/20 pb-2 uppercase tracking-wider text-white">Contact Us</h4>
           <ul className="space-y-4 text-sm text-white">
             <li>

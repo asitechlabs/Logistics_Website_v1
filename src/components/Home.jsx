@@ -16,10 +16,10 @@ const Home = () => {
       imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1920',
     },
     stats: [
-      { label: 'Countries', value: '46' },
-      { label: 'Offices', value: '650+' },
-      { label: 'Experience', value: 'Decades' },
-      { label: 'Employees', value: '24,000+' }
+      { label: 'Countries', value: '25+' },
+      { label: 'Trusted Partners', value: '10+' },
+      { label: 'Experience', value: '5+ Years' },
+      { label: 'Employees', value: '70+' }
     ],
     services: [
       {
@@ -112,7 +112,7 @@ const Home = () => {
     { id: 1, title: 'Place Your Order', desc: 'Submit a pickup request through our platform in minutes.', icon: <ShoppingCart /> },
     { id: 2, title: 'We Pick It Up', desc: 'Our rider arrives at your location and brings the package to our sortation hub.', icon: <Truck /> },
     { id: 3, title: 'Sorting & Dispatch', desc: 'Packages are sorted by destination and assigned to the right delivery route.', icon: <Route /> },
-    { id: 4, title: 'Last-Mile Delivery', desc: 'Our rider delivers directly to your customer\'s door.', icon: <DoorOpen /> },
+    { id: 4, title: 'Last-Mile Delivery', desc: "Our rider delivers directly to your customer's door.", icon: <DoorOpen /> },
     { id: 5, title: 'COD & POD', desc: 'We collect payment where applicable and send you delivery confirmation.', icon: <PackageCheck /> },
   ];
 
@@ -216,7 +216,136 @@ const Home = () => {
           </div>
         </div>
       </section>
- 
+
+      {/* ── CEO MESSAGE VIDEO SECTION (video to be added by CEO) ── */}
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left: Text */}
+            <ScrollReveal direction="right" className="space-y-6">
+              <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm block">
+                A Message From Our CEO
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)] uppercase tracking-tight leading-tight">
+                Vision, Trust &<br />
+                <span className="text-[var(--accent)]">Commitment</span>
+              </h2>
+              <div className="w-20 h-1.5 bg-[var(--accent)]"></div>
+              <p className="text-lg text-[var(--text-light)] leading-relaxed">
+                Our founder and CEO shares what drives us — a relentless commitment to reliable logistics, transparent partnerships, and building a supply chain network that businesses across Nepal and the world can truly depend on.
+              </p>
+              <div className="space-y-4 pt-2">
+                {[
+                  'Built on trust, delivered with precision',
+                  'Customer-first logistics at every stage',
+                  'Expanding global reach from Nepal to the world',
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center gap-4 group">
+                    <div className="w-9 h-9 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center font-bold text-sm shrink-0 group-hover:bg-[var(--accent)] group-hover:text-white transition-all">
+                      ✓
+                    </div>
+                    <span className="font-bold text-[var(--primary)] text-sm">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            {/* Right: Video placeholder */}
+            <ScrollReveal direction="left" className="relative group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-2xl blur opacity-10 group-hover:opacity-25 transition duration-500"></div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-dashed border-[var(--primary)]/30 bg-gray-50 h-[280px] sm:h-[340px] flex flex-col items-center justify-center gap-5 text-center px-8">
+                {/* Play icon ring */}
+                <div className="w-20 h-20 rounded-full bg-[var(--primary)]/10 border-2 border-[var(--primary)]/20 flex items-center justify-center">
+                  <div className="w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[20px] border-l-[var(--primary)] ml-1.5 opacity-40"></div>
+                </div>
+                <div>
+                  <p className="text-[var(--primary)] font-black uppercase tracking-wide text-sm mb-1">
+                    Ma'am Video — Coming Soon
+                  </p>
+                  <p className="text-gray-400 text-xs font-medium leading-relaxed max-w-xs">
+                    A short ~10 second message from our maam will appear here. This section is ready for the video to be uploaded.
+                  </p>
+                </div>
+                {/* Corner label */}
+                <span className="absolute top-4 right-4 bg-[var(--accent)] text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                  Placeholder
+                </span>
+              </div>
+            </ScrollReveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── BULK CARGO SECTION ── */}
+      <section className="py-24 bg-[var(--alt-bg)] border-t border-gray-200">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left: Image */}
+            <ScrollReveal direction="right" className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 h-[320px] sm:h-[400px] relative group order-2 lg:order-1">
+              <img
+                src="https://images.unsplash.com/photo-1604140969696-0c495a16f300?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Bulk Cargo Logistics"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/40 to-transparent"></div>
+              {/* Floating stat */}
+              <div className="absolute bottom-6 left-6 bg-white rounded-2xl px-5 py-3 shadow-lg flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                  <FaBoxes size={18} />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Bulk Handled</p>
+                  <p className="text-sm font-black text-[var(--primary)]">FCL · LCL · ODC Cargo</p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Right: Text */}
+            <ScrollReveal direction="left" className="space-y-6 order-1 lg:order-2">
+              <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm block">
+                Heavy & Bulk Cargo
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)] uppercase tracking-tight leading-tight">
+                We Handle<br />
+                <span className="text-[var(--accent)]">Bulk Cargo</span> Too
+              </h2>
+              <div className="w-20 h-1.5 bg-[var(--accent)]"></div>
+              <p className="text-lg text-[var(--text-light)] leading-relaxed">
+                Beyond standard parcels, we operate a full-scale bulk cargo management system designed for high-volume and oversized freight. Whether it's full container loads (FCL), less-than-container loads (LCL), raw materials, industrial equipment, or out-of-dimension (ODC) shipments — our team has the infrastructure and expertise to move it safely and efficiently.
+              </p>
+              <p className="text-[var(--text-light)] leading-relaxed">
+                Our bulk logistics network covers sea freight consolidation, heavy road transport, customs documentation, and warehousing — all coordinated under one platform so nothing slips through the cracks.
+              </p>
+
+              {/* Feature pills */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                {[
+                  { label: 'FCL & LCL Loads', color: 'bg-blue-50 text-blue-700 border-blue-100' },
+                  { label: 'ODC / Heavy Lift', color: 'bg-orange-50 text-orange-700 border-orange-100' },
+                  { label: 'Raw Materials', color: 'bg-green-50 text-green-700 border-green-100' },
+                  { label: 'Industrial Equipment', color: 'bg-purple-50 text-purple-700 border-purple-100' },
+                  { label: 'Cargo Consolidation', color: 'bg-teal-50 text-teal-700 border-teal-100' },
+                  { label: 'Port-to-Door Delivery', color: 'bg-rose-50 text-rose-700 border-rose-100' },
+                ].map((pill, i) => (
+                  <div key={i} className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-black uppercase tracking-wide ${pill.color}`}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-current shrink-0"></span>
+                    {pill.label}
+                  </div>
+                ))}
+              </div>
+
+              <Link to="/services" className="inline-flex items-center gap-2 text-[var(--accent)] font-bold text-sm pt-2 hover:translate-x-1 transition-transform duration-200">
+                Learn About Our Freight Services <FaChevronRight className="text-xs" />
+              </Link>
+            </ScrollReveal>
+
+          </div>
+        </div>
+      </section>
+
       {/* GLOBAL REACH / STATS */}
       <section className="relative py-20 bg-[var(--primary)] text-white overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
@@ -287,7 +416,6 @@ const Home = () => {
           </ScrollReveal>
           
           <div className="relative">
-            {/* Timeline Line (Desktop) */}
             <div className="absolute top-1/2 left-0 w-full h-1 bg-[var(--primary)]/10 hidden lg:block -translate-y-1/2"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-4">
@@ -320,7 +448,6 @@ const Home = () => {
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column: Text Content */}
             <ScrollReveal direction="right" className="space-y-8 order-2 lg:order-1">
               <span className="text-[var(--accent)] font-bold uppercase tracking-widest text-sm block">ASI In Action</span>
               <h2 className="text-4xl md:text-5xl font-black text-[var(--primary)] uppercase tracking-tight leading-tight">
@@ -353,7 +480,6 @@ const Home = () => {
               </div>
             </ScrollReveal>
 
-            {/* Right Column: Premium Video Container */}
             <ScrollReveal direction="left" className="order-1 lg:order-2 relative group">
               <div className="absolute -inset-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg blur opacity-15 group-hover:opacity-30 transition duration-500"></div>
               <div className="relative rounded-lg overflow-hidden shadow-2xl border border-white h-[250px] sm:h-[350px] lg:h-[450px]">
@@ -439,5 +565,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
