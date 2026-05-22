@@ -1,18 +1,18 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useRef, useCallback, useEffect, memo } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, ArrowRightLeft, PackageCheck, PackageOpen, X, ChevronRight } from 'lucide-react';
+import { MapPin, ArrowRightLeft, PackageCheck, PackageOpen, X, ChevronRight, RotateCcw, MousePointerClick } from 'lucide-react';
 
 const geoUrl = '/world-110m.json';
 
-// Trade data matching topology names
+// Trade data matching topology names — with geographic coordinates for zoom
 const tradeRegions = [
-  { countryName: "United States of America", type: "both", volume: "High Volume", areas: ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Miami, FL", "Seattle, WA"] },
-  { countryName: "United Kingdom", type: "export", volume: "Medium Volume", areas: ["London", "Felixstowe", "Southampton", "Manchester"] },
-  { countryName: "India", type: "import", volume: "High Volume", areas: ["Mumbai", "Chennai", "Kolkata", "New Delhi", "Mundra"] },
-  { countryName: "Australia", type: "both", volume: "Medium Volume", areas: ["Sydney", "Melbourne", "Brisbane", "Perth"] },
-  { countryName: "Nepal", type: "import", volume: "Low Volume", areas: ["Kathmandu", "Birgunj", "Biratnagar"] },
-  { countryName: "Poland", type: "export", volume: "Medium Volume", areas: ["Warsaw", "Kraków", "Gdańsk", "Wrocław"] }
+  { countryName: "United State of America", type: "both", volume: "High Volume", areas: ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Miami, FL", "Seattle, WA"], coordinates: [-100, 40] },
+  { countryName: "United Kingdom", type: "export", volume: "Medium Volume", areas: ["London", "Felixstowe", "Southampton", "Manchester"], coordinates: [-3, 55] },
+  { countryName: "India", type: "import", volume: "High Volume", areas: ["Mumbai", "Chennai", "Kolkata", "New Delhi", "Mundra"], coordinates: [79, 22] },
+  { countryName: "Australia", type: "both", volume: "Medium Volume", areas: ["Sydney", "Melbourne", "Brisbane", "Perth"], coordinates: [134, -25] },
+  { countryName: "Nepal", type: "import", volume: "Low Volume", areas: ["Kathmandu", "Birgunj", "Biratnagar"], coordinates: [84, 28] },
+  { countryName: "Poland", type: "export", volume: "Medium Volume", areas: ["Warsaw", "Kraków", "Gdańsk", "Wrocław"], coordinates: [20, 52] }
 ];
 
 const colorMap = {
@@ -29,12 +29,108 @@ const hoverColorMap = {
   inactive: '#e5e7eb',
 };
 
+const selectedColorMap = {
+  export: '#1d4ed8',
+  import: '#047857',
+  both: '#6d28d9',
+};
+
+// Easing function for smooth animation
+const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+const DEFAULT_CENTER = [0, 20];
+const DEFAULT_ZOOM = 1;
+const ZOOMED_LEVEL = 4;
+const ZOOM_IN_DURATION = 900;
+const ZOOM_OUT_DURATION = 650;
+
 const GlobalTradeMap = () => {
   const [tooltipContent, setTooltipContent] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [position, setPosition] = useState({ coordinates: DEFAULT_CENTER, zoom: DEFAULT_ZOOM });
+  const [isZoomed, setIsZoomed] = useState(false);
+
+  // Refs for animation control
+  const animRef = useRef(null);
+  const posRef = useRef({ coordinates: DEFAULT_CENTER, zoom: DEFAULT_ZOOM });
+  const isAnimatingRef = useRef(false);
+
+  // Clean up animation on unmount
+  useEffect(() => {
+    return () => {
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+    };
+  }, []);
+
+  // Smooth animated transition between map positions
+  const animateToPosition = useCallback((targetCoords, targetZoom, duration = 800) => {
+    if (animRef.current) cancelAnimationFrame(animRef.current);
+    isAnimatingRef.current = true;
+
+    const startCoords = [...posRef.current.coordinates];
+    const startZoom = posRef.current.zoom;
+    const startTime = performance.now();
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+
+      const newPos = {
+        coordinates: [
+          startCoords[0] + (targetCoords[0] - startCoords[0]) * eased,
+          startCoords[1] + (targetCoords[1] - startCoords[1]) * eased
+        ],
+        zoom: startZoom + (targetZoom - startZoom) * eased
+      };
+
+      posRef.current = newPos;
+      setPosition(newPos);
+
+      if (progress < 1) {
+        animRef.current = requestAnimationFrame(step);
+      } else {
+        isAnimatingRef.current = false;
+      }
+    };
+
+    animRef.current = requestAnimationFrame(step);
+  }, []);
+
+  // Zoom into a country
+  const handleCountryClick = useCallback((geo) => {
+    const region = tradeRegions.find((r) => r.countryName === geo.properties.name);
+    if (!region) return;
+
+    // If clicking the same country that's already selected, reset view
+    if (selectedCountry?.countryName === region.countryName) {
+      handleResetZoom();
+      return;
+    }
+
+    setTooltipContent(null);
+    setIsZoomed(true);
+    animateToPosition(region.coordinates, ZOOMED_LEVEL, ZOOM_IN_DURATION);
+
+    // Show the detail modal after zoom animation is halfway through
+setTimeout(()=> setSelectedCountry(region), ZOOM_IN_DURATION * 1.5);
+  }, [animateToPosition, selectedCountry]);
+
+  // Reset to world view
+  const handleResetZoom = useCallback(() => {
+    setSelectedCountry(null);
+    animateToPosition(DEFAULT_CENTER, DEFAULT_ZOOM, ZOOM_OUT_DURATION);
+    setTimeout(() => setIsZoomed(false), ZOOM_OUT_DURATION * 0.5);
+  }, [animateToPosition]);
+
+  // Close modal but keep zoom
+  const handleCloseModal = useCallback(() => {
+    setSelectedCountry(null);
+  }, []);
 
   const handleMouseEnter = (geo, e) => {
+    if (isAnimatingRef.current) return;
     const region = tradeRegions.find((r) => r.countryName === geo.properties.name);
     if (region) {
       setTooltipContent(region);
@@ -57,6 +153,42 @@ const GlobalTradeMap = () => {
     const type = region ? region.type : 'inactive';
     return isHover ? hoverColorMap[type] : colorMap[type];
   };
+
+  // Build Geography styles, with special highlight for the selected country
+  const getGeoStyle = (geo) => {
+    const isInteractive = tradeRegions.some(r => r.countryName === geo.properties.name);
+    const region = tradeRegions.find(r => r.countryName === geo.properties.name);
+    const isSelected = selectedCountry?.countryName === geo.properties.name;
+
+    return {
+      default: {
+        fill: isSelected ? (selectedColorMap[region.type] || getRegionColor(geo.properties.name)) : getRegionColor(geo.properties.name),
+        outline: "none",
+        stroke: isSelected ? "#fbbf24" : "#ffffff",
+        strokeWidth: isSelected ? 1.5 : 0.5,
+        transition: "all 300ms ease",
+      },
+      hover: {
+        fill: getRegionColor(geo.properties.name, true),
+        outline: "none",
+        stroke: isSelected ? "#fbbf24" : "#ffffff",
+        strokeWidth: isSelected ? 1.5 : 1,
+        cursor: isInteractive ? "pointer" : "default"
+      },
+      pressed: {
+        fill: getRegionColor(geo.properties.name, true),
+        outline: "none"
+      }
+    };
+  };
+
+  // When user manually drags / scrolls the map
+  const handleMoveEnd = useCallback((newPos) => {
+    if (!isAnimatingRef.current) {
+      posRef.current = newPos;
+      setPosition(newPos);
+    }
+  }, []);
 
   return (
     <section className="py-24 bg-white relative overflow-hidden" id="global-trade-map">
@@ -108,50 +240,63 @@ const GlobalTradeMap = () => {
             height={400}
             style={{ width: "100%", height: "auto" }}
           >
-            <ZoomableGroup zoom={1} minZoom={1} maxZoom={4} translateExtent={[[0, 0], [800, 400]]}>
+            <ZoomableGroup
+              center={position.coordinates}
+              zoom={position.zoom}
+              onMoveEnd={handleMoveEnd}
+              minZoom={1}
+              maxZoom={6}
+            >
               <Geographies geography={geoUrl}>
                 {({ geographies }) =>
-                  geographies.map((geo) => {
-                    const isInteractive = tradeRegions.some(r => r.countryName === geo.properties.name);
-                    return (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        onMouseEnter={(e) => handleMouseEnter(geo, e)}
-                        onMouseMove={handleMouseMove}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={() => {
-                          const region = tradeRegions.find((r) => r.countryName === geo.properties.name);
-                          if (region) setSelectedCountry(region);
-                        }}
-                        style={{
-                          default: {
-                            fill: getRegionColor(geo.properties.name),
-                            outline: "none",
-                            stroke: "#ffffff",
-                            strokeWidth: 0.5,
-                            transition: "all 250ms"
-                          },
-                          hover: {
-                            fill: getRegionColor(geo.properties.name, true),
-                            outline: "none",
-                            stroke: "#ffffff",
-                            strokeWidth: 1,
-                            cursor: isInteractive ? "pointer" : "default"
-                          },
-                          pressed: {
-                            fill: getRegionColor(geo.properties.name, true),
-                            outline: "none"
-                          }
-                        }}
-                      />
-                    );
-                  })
+                  geographies.map((geo) => (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      onMouseEnter={(e) => handleMouseEnter(geo, e)}
+                      onMouseMove={handleMouseMove}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={() => handleCountryClick(geo)}
+                      style={getGeoStyle(geo)}
+                    />
+                  ))
                 }
               </Geographies>
             </ZoomableGroup>
           </ComposableMap>
 
+          {/* Reset View Button — appears when zoomed */}
+          <AnimatePresence>
+            {isZoomed && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                transition={{ duration: 0.25 }}
+                onClick={handleResetZoom}
+                className="absolute top-6 right-6 md:top-10 md:right-10 flex items-center gap-2 bg-white/95 backdrop-blur-md text-[var(--primary)] px-4 py-2.5 rounded-xl shadow-lg border border-gray-200 text-xs font-black uppercase tracking-wider hover:bg-[var(--primary)] hover:text-white transition-all duration-300 z-20"
+              >
+                <RotateCcw size={14} />
+                Reset View
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          {/* Zoom Hint — shown when not zoomed */}
+          <AnimatePresence>
+            {!isZoomed && (
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-[var(--primary)]/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg pointer-events-none"
+              >
+                <MousePointerClick size={14} />
+                Click a highlighted country to zoom in
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         {/* Legend */}
@@ -239,6 +384,10 @@ const GlobalTradeMap = () => {
                 <span className="font-semibold text-white">{tooltipContent.volume}</span>
               </div>
             </div>
+            <div className="mt-3 pt-2 border-t border-white/10 text-xs text-gray-300 flex items-center gap-1.5">
+              <MousePointerClick size={12} />
+              Click to zoom in
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -251,25 +400,27 @@ const GlobalTradeMap = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedCountry(null)}
+              onClick={handleResetZoom}
               className="fixed inset-0 bg-black/40 z-[60] backdrop-blur-sm"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              exit={{ opacity: 0, scale: 0.9, y: 30 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none"
             >
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-md pointer-events-auto flex flex-col max-h-[90vh]">
-                <div className={`p-6 relative text-white ${selectedCountry.type === 'export' ? 'bg-blue-600' :
-                    selectedCountry.type === 'import' ? 'bg-green-600' :
-                      'bg-purple-600'
-                  }`}>
-                  <button
-                    onClick={() => setSelectedCountry(null)}
-                    className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
+                <div className={`p-6 relative text-white ${
+                  selectedCountry.type === 'export' ? 'bg-gradient-to-br from-blue-600 to-blue-700' :
+                  selectedCountry.type === 'import' ? 'bg-gradient-to-br from-green-600 to-green-700' :
+                  'bg-gradient-to-br from-purple-600 to-purple-700'
+                }`}>
+                  <button 
+                    onClick={handleResetZoom}
+                    className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 flex items-center justify-center text-white transition-all duration-200"
                   >
-                    <X size={24} />
+                    <X size={18} />
                   </button>
                   <div className="flex items-center gap-3 mb-2 pr-8">
                     <MapPin size={24} className="shrink-0" />
@@ -288,10 +439,16 @@ const GlobalTradeMap = () => {
                   <div className="space-y-3">
                     {selectedCountry.areas && selectedCountry.areas.length > 0 ? (
                       selectedCountry.areas.map((area, idx) => (
-                        <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                        <motion.div 
+                          key={idx} 
+                          initial={{ opacity: 0, x: -15 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.08 }}
+                          className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-100/50 transition-all duration-200"
+                        >
                           <ChevronRight size={18} className="text-[var(--accent)] shrink-0" />
                           <span className="font-semibold text-gray-800">{area}</span>
-                        </div>
+                        </motion.div>
                       ))
                     ) : (
                       <p className="text-gray-500 italic text-sm">Nationwide coverage.</p>

@@ -16,8 +16,8 @@ import RoadTransport from './pages/services/RoadTransport';
 import Warehousing from './pages/services/Warehousing';
 import Distribution from './pages/services/Distribution';
 import SupplyChain from './pages/services/SupplyChain';
-import ImportManagement from './pages/services/ImportManagement';
-import ExportManagement from './pages/services/ExportManagement';
+import ImportExportManagement from './pages/services/ImportExportManagement';
+import DoorToDoor from './pages/services/Doortodoor';
 
 // Individual Solution Pages
 import OnDemand from './pages/solutions/OnDemand';
@@ -59,9 +59,9 @@ function App() {
         <Route path="/services/warehousing" element={<Warehousing />} />
         <Route path="/services/distribution" element={<Distribution />} />
         <Route path="/services/supply-chain" element={<SupplyChain />} />
-        <Route path="/services/import" element={<ImportManagement />} />
-        <Route path="/services/export" element={<ExportManagement />} />
-
+        <Route path="/services/import" element={<ImportExportManagement />} />
+        <Route path="/services/export" element={<ImportExportManagement />} />
+        <Route path="/services/door-to-door" element={<DoorToDoor />} />
         {/* Solution Sub-pages */}
         <Route path="/solutions/on-demand" element={<OnDemand />} />
         <Route path="/solutions/house-moving" element={<HouseMoving />} />

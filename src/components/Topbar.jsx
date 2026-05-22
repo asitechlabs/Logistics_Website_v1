@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaGlobe, FaSearch, FaChevronDown, FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink, FaFileImport, FaFileExport } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGlobe, FaSearch, FaChevronDown, FaShip, FaPlane, FaTruck, FaWarehouse, FaBoxes, FaLink, FaExchangeAlt, FaDoorOpen } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
 export default function Topbar() {
@@ -167,9 +167,17 @@ export default function Topbar() {
                       </div>
                       <div>
                         <h4 className="text-[14px] font-black text-[var(--primary)] uppercase border-b border-gray-200 pb-2 mb-4">International Transport</h4>
-                        <ul className="space-y-3">
-                          <li><Link to="/services/import" className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors"><FaFileImport className="text-[var(--primary)]"/> Import Management</Link></li>
-                          <li><Link to="/services/export" className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors"><FaFileExport className="text-[var(--primary)]"/> Export Management</Link></li>
+                        <ul className="pl-4 space-y-2 mt-2">
+                          <li>
+                            <Link to="/services/door-to-door" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
+                              <FaDoorOpen className="text-gray-400 text-xs"/> Door to Door Delivery
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="/services/import" onClick={() => setIsOpen(false)} className="text-sm text-gray-600 hover:text-[var(--accent)] flex items-center gap-2 transition-colors">
+                              <FaExchangeAlt className="text-[var(--primary)]"/> Import & Export Management
+                            </Link>
+                          </li>
                         </ul>
                       </div>
                       <div className="col-span-2 bg-gray-50 p-8 rounded-2xl">
@@ -258,16 +266,18 @@ export default function Topbar() {
                       </li>
                       <li className="pt-2 pb-1">
                         <span className="text-xs font-black text-[var(--primary)] uppercase tracking-wider">International Transport</span>
-                      </li>
-                      <li>
-                        <Link to="/services/import" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
-                          <FaFileImport className="text-gray-400 text-xs" /> Import Management
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/services/export" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
-                          <FaFileExport className="text-gray-400 text-xs" /> Export Management
-                        </Link>
+                        <ul className="pl-4 space-y-2 mt-2">
+                          <li>
+                            <Link to="/services/door-to-door" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
+                              <FaDoorOpen className="text-gray-400 text-xs" /> Door to Door Delivery
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="/services/import" onClick={() => setIsOpen(false)} className="text-sm font-bold text-gray-600 hover:text-[var(--accent)] flex items-center gap-2.5 transition-colors">
+                              <FaExchangeAlt className="text-gray-400 text-xs" /> Import & Export Management
+                            </Link>
+                          </li>
+                        </ul>
                       </li>
                     </ul>
                   </div>
