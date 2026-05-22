@@ -457,7 +457,7 @@ const DoorToDoor = () => {
               to="/contact"
               className="btn-primary inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-lg px-10 py-4"
             >
-              Book a Pickup <ArrowRight size={18} />
+              Book a Pickup Service <ArrowRight size={18} />
             </Link>
             <Link
               to="/services"
