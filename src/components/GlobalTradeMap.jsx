@@ -7,7 +7,7 @@ const geoUrl = '/src/data/world-110m.json';
 
 // Trade data matching topology names — with geographic coordinates for zoom
 const tradeRegions = [
-  { countryName: "United States of America", type: "both", volume: "High Volume", areas: ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Miami, FL", "Seattle, WA"], coordinates: [-100, 40] },
+  { countryName: "United State of America", type: "both", volume: "High Volume", areas: ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Miami, FL", "Seattle, WA"], coordinates: [-100, 40] },
   { countryName: "United Kingdom", type: "export", volume: "Medium Volume", areas: ["London", "Felixstowe", "Southampton", "Manchester"], coordinates: [-3, 55] },
   { countryName: "India", type: "import", volume: "High Volume", areas: ["Mumbai", "Chennai", "Kolkata", "New Delhi", "Mundra"], coordinates: [79, 22] },
   { countryName: "Australia", type: "both", volume: "Medium Volume", areas: ["Sydney", "Melbourne", "Brisbane", "Perth"], coordinates: [134, -25] },
